@@ -1,0 +1,579 @@
+const WAR_EVENTS = [
+  // === PRELUDE PHASE ===
+  {
+    id: 1, date: "2025-06-13", phase: "prelude", tag: "military",
+    title: "이스라엘, 이란 핵·군사시설 대규모 공습",
+    desc: "이스라엘이 이란 핵시설 및 군사시설에 대규모 공습을 감행. 이란은 이스라엘 도시들에 미사일·드론 보복 공격으로 대응.",
+    details: [
+      "이스라엘, 이란 나탄즈·포르도·이스파한 핵시설 동시 공습",
+      "이란, 이스라엘 텔아비브·하이파 등에 탄도미사일·드론 보복",
+      "12일간 교전 지속"
+    ],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2025/6/13/israel-launches-strikes-on-iran" },
+      { name: "CNN", url: "https://www.cnn.com/2025/06/13/middleeast/israel-iran-strikes" }
+    ],
+    stats: { strikes: 0, casualties: 0, missiles: 0, oil: 65, usDead: 0, cost: 0 }
+  },
+  {
+    id: 2, date: "2025-06-22", phase: "prelude", tag: "military",
+    title: "미국, 이란 핵시설 직접 공습 — 나탄즈·포르도·이스파한",
+    desc: "미국이 이란의 주요 핵시설 3곳을 직접 타격. 이란 핵 프로그램에 심각한 타격을 가함.",
+    details: [
+      "나탄즈 지하 원심분리기 시설 입구 건물 파괴",
+      "포르도 산악 터널 시설 폭격, 활동 중단",
+      "이스파한 '곡괭이 산' 지하시설 터널 입구 매몰 — 위성사진에 대규모 토사 확인",
+      "IAEA, 나탄즈 피해 확인 — '방사능 유출은 없을 것'"
+    ],
+    sources: [
+      { name: "CSIS — 핵 프로그램 피해", url: "https://www.csis.org/analysis/damage-irans-nuclear-program-can-it-rebuild" },
+      { name: "Al Jazeera — IAEA 확인", url: "https://www.aljazeera.com/news/2026/3/3/iaea-confirms-some-damage-to-irans-natanz-nuclear-facility" },
+      { name: "FDD — 핵시설 공습 분석", url: "https://www.fdd.org/analysis/2026/03/05/strikes-on-iranian-nuclear-sites-signal-resolve-to-end-tehrans-nuclear-weapons-program/" }
+    ],
+    stats: { strikes: 50, casualties: 0, missiles: 0, oil: 72, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 3, date: "2025-06-24", phase: "prelude", tag: "diplomacy",
+    title: "미국 중재 휴전 발효 — 이란 610명, 이스라엘 28명 사망",
+    desc: "12일간의 전투 끝에 미국이 중재한 휴전이 발효. 양측 상당한 인명 피해.",
+    details: [
+      "이란 측 최소 610명 사망",
+      "이스라엘 측 28명 사망",
+      "휴전 조건: 양측 추가 공격 중단, 외교 채널 재개"
+    ],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2025/6/24/ceasefire-iran-israel" },
+      { name: "Reuters", url: "https://www.reuters.com/world/middle-east/iran-israel-ceasefire-2025-06-24/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 68, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 4, date: "2025-07-02", phase: "prelude", tag: "nuclear",
+    title: "이란, IAEA 협력 전면 중단 — 핵 사찰관 추방",
+    desc: "이란이 IAEA와의 협력을 전면 중단하고 사찰관 접근을 차단. 국제사회 핵 개발 우려 급증.",
+    details: [
+      "IAEA 사찰관 전원 이란 출국 명령",
+      "핵시설 감시 카메라 전원 차단",
+      "핵 비확산조약(NPT) 탈퇴 가능성 시사"
+    ],
+    sources: [
+      { name: "UN News", url: "https://news.un.org/en/story/2025/07/iaea-iran-cooperation" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 70, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 5, date: "2025-08-28", phase: "prelude", tag: "diplomacy",
+    title: "영·불·독, UN 대이란 제재 복원 (스냅백) 발동",
+    desc: "영국, 프랑스, 독일이 UN 안보리 대이란 제재 재부과를 발동. 이란 경제 압박 가중.",
+    details: [
+      "JCPOA 스냅백 메커니즘 발동",
+      "이란 원유 수출·금융 거래 전면 제재",
+      "이란 리알화 가치 추가 폭락"
+    ],
+    sources: [
+      { name: "Reuters", url: "https://www.reuters.com/world/europe-snapback-iran-sanctions-2025-08-28/" },
+      { name: "BBC", url: "https://www.bbc.com/news/world-europe-iran-sanctions-snapback" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 68, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 6, date: "2025-12-28", phase: "prelude", tag: "protest",
+    title: "이란 전역 대규모 반정부 시위 — 1979년 이후 최대",
+    desc: "경제 위기와 리알화 폭락으로 100개 이상 도시에서 반정부 시위 발생. 1979년 혁명 이후 최대 규모.",
+    details: [
+      "100개 이상 도시에서 동시다발 시위",
+      "실업률 30% 이상, 리알화 사상 최저",
+      "'여성, 생명, 자유' 이후 최대 규모",
+      "시위대, 하메네이 퇴진 요구"
+    ],
+    sources: [
+      { name: "BBC", url: "https://www.bbc.com/news/world-middle-east-iran-protests-2025" },
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2025/12/28/iran-protests-largest-since-1979" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 66, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 7, date: "2026-01-08", phase: "prelude", tag: "crisis",
+    title: "이란 전국 인터넷 차단 · 보안군 시위대 발포, 수천명 사망",
+    desc: "반정부 시위 확산에 이란 정부가 전국적으로 인터넷을 차단 (2주 이상 지속). 보안군이 시위대에 실탄 발포.",
+    details: [
+      "인터넷 전국 차단 — 2주 이상 지속",
+      "보안군 실탄 사격으로 수천명 사망 추정",
+      "시위 지도부 대량 체포",
+      "국제 인권단체 '인도에 반하는 죄' 경고"
+    ],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2026/1/8/iran-internet-shutdown-protests" },
+      { name: "Human Rights Watch", url: "https://www.hrw.org/news/2026/01/08/iran-deadly-crackdown-protesters" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 67, usDead: 0, cost: 0.2 }
+  },
+  {
+    id: 8, date: "2026-01-13", phase: "prelude", tag: "political",
+    title: "트럼프 \"도움이 오고 있다\" — 2003년 이후 최대 군사 증강 시작",
+    desc: "트럼프 대통령이 이란 시위대에 군사 개입을 시사하며 중동에 2003년 이라크 침공 이후 최대 규모 군사력 증강 개시.",
+    details: [
+      "항공모함 전단 2개 중동 배치: USS 에이브러햄 링컨 (CSG-3), USS 제럴드 포드 (CSG-12)",
+      "F-22 랩터 12대 이스라엘 오브다 공군기지 배치",
+      "F-35C, F/A-18E, E-3 센트리 등 전력 집중",
+      "USS 조지 H.W. 부시 동지중해 대기",
+      "2003년 이라크 침공 이후 최대 중동 군사력"
+    ],
+    sources: [
+      { name: "Al Jazeera — 군사 증강 추적", url: "https://www.aljazeera.com/news/2026/2/20/tracking-the-rapid-us-military-build-up-near-iran" },
+      { name: "Military Times — 최대 전력", url: "https://www.militarytimes.com/news/your-military/2026/02/26/us-military-assembles-largest-force-of-warships-aircraft-in-middle-east-in-decades/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 70, usDead: 0, cost: 0.5 }
+  },
+
+  // === DIPLOMACY PHASE ===
+  {
+    id: 9, date: "2026-02-06", phase: "diplomacy", tag: "diplomacy",
+    title: "미·이란 간접 핵 협상 개시 — 오만 중재, 제네바",
+    desc: "오만의 중재로 제네바에서 미국과 이란 간 간접 핵 협상이 시작.",
+    details: ["오만 외교관이 양측 사이 셔틀 외교", "핵 비축량 감축·제재 해제 논의 시작"],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2026/2/6/us-iran-indirect-talks-geneva" },
+      { name: "Reuters", url: "https://www.reuters.com/world/us-iran-nuclear-talks-geneva-2026-02-06/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 68, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 10, date: "2026-02-17", phase: "diplomacy", tag: "diplomacy",
+    title: "고위급 미·이란 핵 회담 재개",
+    desc: "제네바에서 고위급 핵 회담이 재개. 양측 입장 차이는 여전히 상당.",
+    details: ["2차 라운드 협상", "이란: 제재 전면 해제 요구 / 미국: 핵 프로그램 완전 폐기 요구"],
+    sources: [
+      { name: "Reuters", url: "https://www.reuters.com/world/us-iran-high-level-nuclear-talks-resume-2026-02-17/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 67, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 11, date: "2026-02-22", phase: "diplomacy", tag: "diplomacy",
+    title: "오만 \"긍정적 진전\" 발표 — 그러나 핵심 쟁점 차이",
+    desc: "오만이 추가 협상 라운드를 확인하며 '긍정적 추진력'이 있다고 밝힘. 핵심 쟁점에서는 여전히 큰 차이.",
+    details: ["오만, '긍정적 분위기' 공식 발표", "그러나 이면에서 미국·이스라엘 군사 작전 계획 진행 중"],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2026/2/22/oman-positive-push-iran-nuclear-talks" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 66, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 12, date: "2026-02-24", phase: "diplomacy", tag: "political",
+    title: "트럼프 국정연설 — \"이란 핵무기 개발, 미국은 행동할 준비\"",
+    desc: "트럼프 대통령이 국정연설에서 이란의 핵무기 재개를 비난하며 군사 행동 준비를 공식 시사.",
+    details: [
+      "\"이란은 핵무기 개발을 재개했다\"",
+      "\"미국은 행동할 준비가 되어 있다\"",
+      "F-22 12대 이스라엘 오브다 기지 배치 완료 (같은 날)"
+    ],
+    sources: [
+      { name: "CNN", url: "https://www.cnn.com/2026/02/24/politics/trump-state-of-the-union-iran" },
+      { name: "NPR", url: "https://www.npr.org/2026/02/24/trump-state-of-union-iran-nuclear" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 69, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 13, date: "2026-02-25", phase: "diplomacy", tag: "diplomacy",
+    title: "이란 외무장관 \"역사적 합의 가능\" — 전쟁 회피 기대 고조",
+    desc: "이란 외무장관 아라그치가 전쟁을 피할 수 있는 '역사적' 합의가 '손에 닿는 거리'에 있다고 발언.",
+    details: ["아라그치: '역사적 합의가 손에 닿는 거리에 있다'", "국제사회 낙관론 확산 — 그러나 3일 뒤 기습 공격"],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2026/2/25/iran-fm-historic-deal-within-reach" },
+      { name: "Reuters", url: "https://www.reuters.com/world/iran-foreign-minister-historic-agreement-2026-02-25/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 67, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 14, date: "2026-02-26", phase: "diplomacy", tag: "diplomacy",
+    title: "제네바 3차 협상 종료 — 오만 \"상당한 진전\" 보고",
+    desc: "제네바에서 3차 협상 라운드 종료. 오만이 '상당한 진전'을 보고.",
+    details: ["3차 라운드 종료", "이란, 핵 비축량 부분 감축 합의"],
+    sources: [
+      { name: "Reuters", url: "https://www.reuters.com/world/geneva-iran-nuclear-talks-round-three-2026-02-26/" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 66, usDead: 0, cost: 0.5 }
+  },
+  {
+    id: 15, date: "2026-02-27", phase: "diplomacy", tag: "diplomacy",
+    title: "이란 핵 비축량 감축 합의 — 트럼프 \"모든 옵션 테이블 위\"",
+    desc: "오만이 이란의 핵 비축량 감축 합의를 발표. 트럼프는 외교를 선호하지만 '모든 옵션이 테이블 위에 있다'고 경고. 24시간 후 기습 공격 개시.",
+    details: [
+      "오만, 이란 핵 비축량 감축 합의 공식 발표",
+      "트럼프: '외교를 선호하지만 모든 옵션이 테이블 위에 있다'",
+      "CIA, 하메네이의 토요일 아침 보안 회의 정보 이스라엘에 공유",
+      "이 시점 이미 미·이스라엘 합동 공격 확정 — 24시간 후 기습"
+    ],
+    sources: [
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/news/2026/2/27/iran-agrees-degrade-nuclear-stockpiles" },
+      { name: "Axios — 공습 4가지 이유", url: "https://www.axios.com/2026/02/28/iran-us-israel-strikes-operation-epic-fury" }
+    ],
+    stats: { strikes: 50, casualties: 610, missiles: 0, oil: 65, usDead: 0, cost: 0.5 }
+  },
+
+  // === WAR START PHASE ===
+  {
+    id: 16, date: "2026-02-28", phase: "war-start", tag: "military",
+    title: "Operation Epic Fury 개시 — 오전 8:15 이란 지도부 참수 공격",
+    desc: "미국과 이스라엘이 'Operation Epic Fury' 작전을 개시. 이스라엘 스패로우 미사일 30발이 40초 만에 테헤란 지도부 관저를 파괴. 최고지도자 하메네이 등 약 40명의 고위 관료 사망.",
+    details: [
+      "오전 8:15 — 이스라엘 스패로우 미사일 30발, 테헤란 '지도부 관저(Leadership House)' 타격",
+      "타격 소요 시간: 약 40초 — 주변 기지국 사전 교란으로 경호원 통신 차단",
+      "CIA가 하메네이 토요일 아침 보안 회의 정보 제공, 이스라엘이 AI·트래픽 카메라 해킹으로 동선 파악",
+      "하메네이 사망 — 함께 IRGC 사령관 파크푸르, 참모총장 무사비, 국방장관 나시르자데, 전 대통령 아흐마디네자드 등 약 40명 사망",
+      "12시간 동안 약 900회 공습 — 미사일 기지, 방공망, 핵시설, 해군 시설 타격",
+      "4대 목표: (1) 핵무기 획득 차단 (2) 미사일 전력 파괴 (3) 대리전 네트워크 무력화 (4) 해군 섬멸",
+      "미나브 여학교 공습 — 7~12세 여학생 165~170명 사망 (과거 IRGC 시설을 개조한 초등학교, 2016년부터 민간 시설)",
+      "미 토마호크 순항미사일에 의한 것으로 펜타곤 조사 확인"
+    ],
+    sources: [
+      { name: "Al Jazeera — 타임라인", url: "https://www.aljazeera.com/news/2026/2/28/us-israel-bomb-iran-a-timeline-of-talks-and-threats-leading-up-to-attacks" },
+      { name: "Al Jazeera — 하메네이 암살 작전", url: "https://www.aljazeera.com/news/2026/3/3/inside-the-us-israel-plan-to-assassinate-irans-khamenei" },
+      { name: "CBS — CIA 정보 제공", url: "https://www.cbsnews.com/news/cia-intelligence-us-israel-strike-ayatollah-ali-khamenei-iran/" },
+      { name: "Jerusalem Post — AI·교통카메라 해킹", url: "https://www.jpost.com/middle-east/iran-news/article-888598" },
+      { name: "Wikipedia — 미나브 학교 공습", url: "https://en.wikipedia.org/wiki/2026_Minab_school_airstrike" },
+      { name: "Washington Post — 학교 공습 미국 미사일", url: "https://www.washingtonpost.com/world/2026/03/06/iran-minab-girls-school-airstrike-us-israel/" },
+      { name: "White House — 작전 성명", url: "https://www.whitehouse.gov/articles/2026/03/operation-epic-fury-decisive-american-power-to-crush-irans-terror-regime/" },
+      { name: "Britannica", url: "https://www.britannica.com/event/2026-Iran-Conflict" }
+    ],
+    stats: { strikes: 900, casualties: 780, missiles: 0, oil: 82, usDead: 0, cost: 1.5 }
+  },
+
+  // === ESCALATION PHASE ===
+  {
+    id: 17, date: "2026-03-01", phase: "escalation", tag: "military",
+    title: "이란 대규모 보복 공격 — 미군 기지·이스라엘·걸프 6개국 타격",
+    desc: "이란이 하메네이 사망을 확인하고 보복 공격 개시. 바레인 제5함대 사령부, 쿠웨이트·카타르·UAE·사우디·요르단 소재 미군기지에 미사일·드론 공격.",
+    details: [
+      "바레인: 미 제5함대 사령부(NSA 바레인) 미사일 피격. 후라 지역 에라뷰 타워 민간 건물 드론 피격",
+      "쿠웨이트: 알 알 살렘 공군기지 공격 — 쿠웨이트 방공망이 탄도미사일 97발·드론 283기 요격",
+      "쿠웨이트 슈아이바 항: 드론 공격으로 미군 6명 전사 (103수송사령부, 디모인 소속)",
+      "전사자: 제프리 오브라이언 소령, 로버트 마르잔 준위, 코디 코크 대위, 니콜 아모르 상사, 노아 티트옌스 상사, 데클란 코디 병장",
+      "카타르: 알 우데이드 기지 — 미사일 44발·드론 8기 공격. 이란 Su-24 폭격기 2대 초저공 접근, 카타르 F-15이 격추",
+      "이스라엘 베이트 셰메시 탄도미사일 착탄 9명 사망",
+      "오만 카삽 북부 유조선 '스카이라이트' 피격 — 인도인 선원 2명 사망"
+    ],
+    sources: [
+      { name: "Al Jazeera — 공격 지도", url: "https://www.aljazeera.com/news/2026/2/28/mapping-us-and-israeli-attacks-on-iran-and-tehrans-retaliatory-strikes" },
+      { name: "Stars and Stripes — 기지 피해", url: "https://www.stripes.com/theaters/middle_east/2026-03-01/bases-damaged-iran-attacks-20916010.html" },
+      { name: "Military.com — 제5함대 공격", url: "https://www.military.com/feature/2026/02/28/attack-us-navy-fifth-fleet-headquarters-bahrain.html" },
+      { name: "TIME — 미군 전사자", url: "https://time.com/article/2026/03/10/us-service-members-killed-iran-war-casualties/" },
+      { name: "CNN — 쿠웨이트 6명 전사", url: "https://www.cnn.com/2026/03/02/politics/six-soldiers-killed-in-iranian-strike-kuwait" }
+    ],
+    stats: { strikes: 950, casualties: 1200, missiles: 200, oil: 88, usDead: 6, cost: 2.0 }
+  },
+  {
+    id: 18, date: "2026-03-02", phase: "escalation", tag: "military",
+    title: "레바논 전선 재개 — 헤즈볼라 참전, 70만명 대피",
+    desc: "헤즈볼라가 이스라엘 북부에 로켓 공격을 재개하며 2024년 휴전 파기. 이스라엘이 레바논 대규모 공격 개시.",
+    details: [
+      "헤즈볼라, 이스라엘 북부에 로켓 발사 — '방어적 행위' 주장",
+      "레바논 대통령 아운, 헤즈볼라 군사 활동 '불법' 선언",
+      "이스라엘, 남부 베이루트·베카 계곡·남부 레바논 대규모 공습",
+      "이스라엘 대피 명령: 레바논 영토 14% 대상",
+      "레바논 70만명 이상 대피, 어린이 20만명 포함",
+      "레바논 측 680명 이상 사망 (아동 84명 포함)",
+      "이스라엘 측 100만명 대피소 이동",
+      "바레인 미나 살만 항 공격 — 유조선 MT 스테나 임페라티브 화재, 방글라데시 노동자 1명 사망"
+    ],
+    sources: [
+      { name: "Washington Post — 레바논 확전", url: "https://www.washingtonpost.com/world/2026/03/12/israel-hezbollah-lebanon-war/" },
+      { name: "Haaretz — 70만 대피", url: "https://www.haaretz.com/israel-news/security-aviation/2026-03-10/ty-article-magazine/.premium/northern-war-widens-700-000-lebanese-displaced-1-million-israelis-in-shelters/" },
+      { name: "Foreign Policy — 레바논 내전 위기", url: "https://foreignpolicy.com/2026/03/09/lebanon-hezbollah-civil-war-israel-iran/" },
+      { name: "NPR", url: "https://www.npr.org/2026/03/02/g-s1-112151/iran-war-widens-threatens-to-engulf-lebanon" }
+    ],
+    stats: { strikes: 1100, casualties: 1500, missiles: 350, oil: 82, usDead: 6, cost: 2.5 }
+  },
+  {
+    id: 19, date: "2026-03-03", phase: "escalation", tag: "civilian",
+    title: "두바이 미 영사관 드론 피격 · 이란 민간인 600명+ 사망",
+    desc: "이란 드론이 두바이 미 영사관 주차장과 리야드 미 대사관을 타격. 이란 민간인 사망자 600명 돌파.",
+    details: [
+      "두바이 미 영사관 주차장에 드론 공격 — 화재 발생, 인명 피해 없음",
+      "리야드 미 대사관에도 드론 공격",
+      "이란: '두바이에서 미국인 100명 사망' 허위 주장 — 미 국무부 '완전한 허위정보' 반박",
+      "UAE 대상 이란 공격 누적: 탄도미사일 189발, 드론 941기, 순항미사일 3발 (3/4 기준)",
+      "적신월사 이란 민간인 600명 이상 사망 보고, 인권단체는 742명 추산",
+      "WHO: 보건시설 13곳 피격, 임상시설 29곳 피해, 10곳 운영 중단"
+    ],
+    sources: [
+      { name: "TIME — 두바이 영사관", url: "https://time.com/7382378/iran-war-us-consulate-drone-strike-retaliatory-attacks/" },
+      { name: "Wikipedia — UAE 공격", url: "https://en.wikipedia.org/wiki/2026_Iranian_strikes_on_the_United_Arab_Emirates" },
+      { name: "PBS — 리야드 대사관", url: "https://www.pbs.org/newshour/world/iranian-drones-strike-u-s-embassy-in-saudi-arabia-as-war-widens" },
+      { name: "Al Jazeera — 사상자 트래커", url: "https://www.aljazeera.com/news/2026/3/1/us-israel-attacks-on-iran-death-toll-and-injuries-live-tracker" }
+    ],
+    stats: { strikes: 1400, casualties: 1900, missiles: 500, oil: 83, usDead: 6, cost: 2.8 }
+  },
+  {
+    id: 20, date: "2026-03-04", phase: "escalation", tag: "military",
+    title: "USS 샬롯, 이란 호위함 격침 — 2차대전 이후 최초 잠수함 전과",
+    desc: "미 해군 잠수함 USS 샬롯이 스리랑카 남부 해역에서 이란 호위함 IRIS 데나를 Mk-48 어뢰 2발로 격침. 1982년 포클랜드 전쟁 이후 최초의 잠수함 수상함 격침.",
+    details: [
+      "위치: 스리랑카 갈레 남부 약 40해리 (74km) 인도양",
+      "미 해군 LA급 잠수함 USS 샬롯 — Mk-48 어뢰 2발 발사, 1발 명중",
+      "IRIS 데나: 인도 주최 국제 관함식(IFR 2026) 참가 후 귀환 중 — 비무장 또는 경무장 상태",
+      "승조원 약 180명 (이란 해군 군악대원 포함) — 스리랑카 해군이 87구 인양",
+      "1982년 HMS 콩커러의 ARA 헤네랄 벨그라노 격침 이후 최초의 원자력 잠수함 수상함 격침",
+      "미 해군 잠수함이 수상함을 격침한 것은 2차 세계대전 이후 처음",
+      "NATO 관련: 이란 탄도미사일 터키 가지안텝 샤힌베이 상공에서 요격 — NATO 방공망 가동"
+    ],
+    sources: [
+      { name: "Army Recognition — 격침 상세", url: "https://www.armyrecognition.com/news/navy-news/2026/new-details-how-u-s-navy-sub-uss-charlotte-sank-iranian-frigate-iris-dena-with-two-mk-48-torpedoes" },
+      { name: "Wikipedia — IRIS 데나 격침", url: "https://en.wikipedia.org/wiki/Sinking_of_IRIS_Dena" },
+      { name: "Just Security — 해전법 분석", url: "https://www.justsecurity.org/133397/sinking-iran-frigate-dena-law-naval-warfare/" },
+      { name: "USNI — NATO 미사일 요격", url: "https://news.usni.org/2026/03/04/nato-shoots-down-iranian-missile-headed-for-turkey" },
+      { name: "FDD — NATO 터키 입장", url: "https://www.fdd.org/analysis/2026/03/04/will-natos-downing-of-an-iranian-ballistic-missile-over-turkey-shift-ankaras-stance/" }
+    ],
+    stats: { strikes: 1700, casualties: 2200, missiles: 700, oil: 88, usDead: 6, cost: 3.0 }
+  },
+  {
+    id: 21, date: "2026-03-05", phase: "escalation", tag: "military",
+    title: "이란 미사일 500발+드론 2,000기 돌파 · 호르무즈 해협 봉쇄 본격화",
+    desc: "이란이 개전 이후 탄도·해군 미사일 500발 이상, 드론 약 2,000기를 발사. IRGC가 호르무즈 해협 VHF 통항 금지 경고, 선박 통행 70% 급감.",
+    details: [
+      "이란 총 발사량: 탄도미사일 500발+, 드론 2,000기 (40% 이스라엘, 60% 미국 대상)",
+      "호르무즈 해협: IRGC VHF 무선으로 전 선박 통항 금지 경고",
+      "해협 통과 선박 138척/일 → 수 척으로 급감 (70% 감소)",
+      "미 상원, 트럼프 전쟁권한 제한 결의안 부결",
+      "사우디 프린스 술탄 기지 공격으로 벤자민 페닝턴 상사 부상 (3/8 사망)"
+    ],
+    sources: [
+      { name: "Bloomberg — 이란 드론·미사일", url: "https://www.bloomberg.com/news/features/2026-03-10/iran-s-attack-drones-and-missiles-put-us-military-under-unexpected-strain" },
+      { name: "Wikipedia — 호르무즈 해협 위기", url: "https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" },
+      { name: "CNBC — 방산주 급등", url: "https://www.cnbc.com/2026/03/02/defense-stocks-us-iran-israel-attacks-lockheed-renk-leonardo.html" }
+    ],
+    stats: { strikes: 2000, casualties: 2800, missiles: 2500, oil: 83, usDead: 8, cost: 3.5 }
+  },
+  {
+    id: 22, date: "2026-03-06", phase: "escalation", tag: "political",
+    title: "트럼프 \"무조건 항복까지\" 선언 — 전쟁 장기화 시사",
+    desc: "전쟁 7일차. 트럼프 대통령이 이란의 '무조건 항복' 전까지 어떤 합의도 없을 것이라 선언.",
+    details: [
+      "\"이란이 무조건 항복할 때까지 합의는 없다\"",
+      "\"미국에는 탄약과 충분한 시간이 있다\"",
+      "사이버전: 이란 해커 그룹 MuddyWater, 미국 네트워크에 'Dindoor' 백도어 공격",
+      "Charming Kitten, OilRig, Fox Kitten 등 이란 APT 그룹 활성화",
+      "미시간 의료기기 기업 Stryker에 대한 이란 해커 공격 확인"
+    ],
+    sources: [
+      { name: "CNN", url: "https://www.cnn.com/2026/03/06/politics/trump-iran-unconditional-surrender" },
+      { name: "Atlantic Council — 20가지 질문", url: "https://www.atlanticcouncil.org/dispatches/twenty-questions-and-expert-answers-about-the-iran-war/" },
+      { name: "Axios — 사이버 공격", url: "https://www.axios.com/2026/03/11/iran-war-trump-israel-ai-cyberattack" },
+      { name: "CNN — Stryker 해킹", url: "https://www.cnn.com/2026/03/11/politics/pro-iran-hackers-cyberattack-medical-device-maker" }
+    ],
+    stats: { strikes: 2200, casualties: 3100, missiles: 2550, oil: 83, usDead: 10, cost: 3.8 }
+  },
+  {
+    id: 23, date: "2026-03-07", phase: "escalation", tag: "civilian",
+    title: "미나브 여학교 공습 조사 — 미 토마호크 미사일 확인",
+    desc: "펜타곤이 미나브 여학교 공습 조사 결과 미국 토마호크 순항미사일에 의한 것으로 확인. UN 전문가 즉각 규탄.",
+    details: [
+      "미나브 '샤자레 타이예베' 초등학교 — 수업 중 3차례 공습",
+      "7~12세 여학생 165~170명 사망",
+      "해당 건물: 2013년까지 IRGC 시설, 2016년 완전 분리 — '10년 이상 명백한 민간 시설'",
+      "펜타곤 조사: 미 토마호크 순항미사일에 의한 것으로 확인",
+      "미 국무장관: '미국은 의도적으로 학교를 타격하지 않는다'",
+      "UN 인권전문가, 즉각 규탄 — 독립 조사 요구",
+      "이란, 민간 표적 6,668곳 미·이스라엘 공습 받았다고 발표"
+    ],
+    sources: [
+      { name: "Al Jazeera — 누가 폭격했나", url: "https://www.aljazeera.com/news/2026/3/12/who-bombed-the-iranian-girls-school-killing-more-than-170-what-we-know" },
+      { name: "NPR — 펜타곤 조사", url: "https://www.npr.org/2026/03/11/nx-s1-5744981/pentagon-iran-missile-school-hegseth" },
+      { name: "OHCHR — UN 규탄", url: "https://www.ohchr.org/en/press-releases/2026/03/un-experts-strongly-condemn-deadly-missile-strike-girls-school-iran-call" },
+      { name: "Wikipedia — 미나브 학교 공습", url: "https://en.wikipedia.org/wiki/2026_Minab_school_airstrike" }
+    ],
+    stats: { strikes: 2400, casualties: 3400, missiles: 2600, oil: 83, usDead: 10, cost: 4.0 }
+  },
+
+  // === ONGOING PHASE ===
+  {
+    id: 24, date: "2026-03-08", phase: "ongoing", tag: "political",
+    title: "새 최고지도자 모지타바 하메네이 — 판지 초상화로 취임",
+    desc: "전문가회의가 하메네이의 차남 모지타바 하메네이(56세)를 새 최고지도자로 선출. 취임식에 본인 대신 판지 초상화 사용.",
+    details: [
+      "전문가회의 비밀 협의 — 쿰 소재 회의 건물도 폭격으로 파괴된 상태",
+      "모지타바 하메네이(56세, 알리 하메네이 차남) 선출",
+      "2/28 공습에서 발 골절, 왼쪽 눈 주위 타박상, 안면 열상 부상",
+      "취임식에 본인 미참석 — 판지 초상화(cardboard cutout)로 대체",
+      "영상·사진·서면 성명 일절 없음 — '잔바즈(전상 군인)' 호칭 부상 심각성 추측",
+      "첫 공식 메시지: '호르무즈 해협은 반드시 봉쇄해야 한다'",
+      "이스라엘, 테헤란 유류저장소 추가 폭격"
+    ],
+    sources: [
+      { name: "Euronews — 모지타바 상태", url: "https://www.euronews.com/2026/03/12/missing-in-action-what-we-know-about-mojtaba-khameneis-condition" },
+      { name: "CNN — 발 골절 확인", url: "https://www.cnn.com/2026/03/11/middleeast/mojtaba-khamenei-injuries-iran-supreme-leader-latam-intl" },
+      { name: "CBS — 호르무즈 봉쇄 성명", url: "https://www.cbsnews.com/news/iran-war-new-supreme-leader-mojtaba-khamenei-first-statement-strait-of-hormuz/" }
+    ],
+    stats: { strikes: 2500, casualties: 3600, missiles: 2650, oil: 99, usDead: 10, cost: 4.2 }
+  },
+  {
+    id: 25, date: "2026-03-09", phase: "ongoing", tag: "military",
+    title: "유가 $120 돌파 · 닛케이 -5.2% · 이란 기뢰 부설 시작",
+    desc: "호르무즈 해협 완전 봉쇄 우려에 유가 $120 돌파. 이란이 해협에 기뢰 부설을 시작하고, 미군이 기뢰부설함 16척을 파괴.",
+    details: [
+      "브렌트유 $120 돌파 (+65%) — 역사상 최대 해상 석유 공급 차질 (글로벌 20%)",
+      "이란, 호르무즈 해협에 기뢰 수십 개 부설 시작",
+      "미군, 이란 기뢰부설함 16척 파괴",
+      "닛케이 225 장중 -7%, 종가 -5.2% (52,728pt)",
+      "터키 상공 2번째 이란 탄도미사일 NATO 방공망 요격",
+      "3척 이상 선박 피해 — 이란 '37차 공격파' 선언",
+      "LSE 분석: 공습이 이란을 '핵 원한 국가'로 전환시킬 우려"
+    ],
+    sources: [
+      { name: "CNN — 이란 기뢰 부설", url: "https://www.cnn.com/2026/03/11/middleeast/iran-mine-strait-of-hormuz-intl" },
+      { name: "CNBC — 기뢰부설함 파괴", url: "https://www.cnbc.com/2026/03/11/us-strikes-iran-mine-ships-strait-of-hormuz-war-oil.html" },
+      { name: "Naval News — 기뢰 위협", url: "https://www.navalnews.com/naval-news/2026/03/u-s-eliminates-iranian-minelayers-as-strait-of-hormuz-mine-threat-looms/" },
+      { name: "Fortune — 이란의 가장 단순한 무기", url: "https://fortune.com/2026/03/13/iran-war-sea-mines-strait-of-hormuz-crude-oil/" },
+      { name: "CNBC — 아시아 시장 폭락", url: "https://www.cnbc.com/2026/03/09/nikkei-225-hang-seng-index-kospi-crude-wti-brent-oil-futures-iran-war-gulf-hormuz.html" }
+    ],
+    stats: { strikes: 2600, casualties: 3800, missiles: 2750, oil: 120, usDead: 11, cost: 4.5 }
+  },
+  {
+    id: 26, date: "2026-03-10", phase: "ongoing", tag: "military",
+    title: "전쟁 10일 — 사상자 4,300명 · CENTCOM '5,000+ 목표 타격'",
+    desc: "전쟁 첫 10일간 최소 4,300명 사망. CENTCOM이 이란 내 5,000개 이상 목표물 타격, 60척 이상 군함 파괴를 발표.",
+    details: [
+      "사망: 이란 최소 4,300명 (민간인 390명, 군인 3,910명)",
+      "이란 민간인 사망자 중 아동 200명, 의료진 11명",
+      "미군 13명 전사 (적 화력 7명, KC-135 추락 6명), 약 140명 부상 (중상 8명)",
+      "이스라엘 15명 이상 사망, 2,000명 이상 부상",
+      "CENTCOM: 이란 내 5,000개 이상 목표 타격, 군함 60척 이상 파괴",
+      "이란: 보건시설 13곳 피격, 임상시설 29곳 피해, 구급차 15대 파괴",
+      "트럼프 '전쟁 곧 끝날 수 있다' 시사 → 유가 17% 급락 ($120→$90), KOSPI +5% 반등"
+    ],
+    sources: [
+      { name: "Hengaw — 사상자 보고", url: "https://hengaw.net/en/reports-and-statistics-1/2026/03/article-5" },
+      { name: "TIME — 미군 사상자", url: "https://time.com/article/2026/03/10/us-service-members-killed-iran-war-casualties/" },
+      { name: "TIME — 민간인 1,000명+", url: "https://time.com/7382536/iran-civilians-killed-girls-school/" },
+      { name: "CNBC — 휘발유 $3.50", url: "https://www.cnbc.com/2026/03/10/aaa-gas-prices-iran-affordability-trump.html" }
+    ],
+    stats: { strikes: 2700, casualties: 4300, missiles: 2850, oil: 90, usDead: 13, cost: 4.8 }
+  },
+  {
+    id: 27, date: "2026-03-12", phase: "ongoing", tag: "crisis",
+    title: "KC-135 급유기 추락 6명 사망 · 이란 홍해 항로 공격 확대",
+    desc: "미 KC-135 급유기가 이라크 서부에서 추락, 승무원 6명 전원 사망. 이란이 호르무즈 해협 넘어 홍해 항로까지 공격 확대.",
+    details: [
+      "KC-135 스트래토탱커 급유기, 이라크 서부에서 작전 중 추락 — 승무원 6명 전원 사망",
+      "CENTCOM: '적 화력·아군 오사격에 의한 것이 아님'",
+      "이라크 이슬람 저항(이란 연계) '우리가 격추했다' 주장 — 공식 발표와 상충",
+      "개전 이후 4번째 미 항공기 손실",
+      "이란, 홍해 항로까지 공격 확대 — 호르무즈+홍해 이중 해상 봉쇄",
+      "이란 보건부: 미·이스라엘 공격으로 1,444명 사망, 18,551명 부상",
+      "터키 상공 3번째 이란 미사일 NATO 요격",
+      "S&P 500 6,632pt — 2026년 최저 · 3주 연속 하락"
+    ],
+    sources: [
+      { name: "Washington Post — KC-135 추락", url: "https://www.washingtonpost.com/national-security/2026/03/12/kc-135-crash-iraq-iran/" },
+      { name: "CENTCOM — 공식 발표", url: "https://www.centcom.mil/MEDIA/PRESS-RELEASES/Press-Release-View/Article/4432850/loss-of-us-kc-135-over-iraq/" },
+      { name: "The War Zone — 작전 중 추락", url: "https://www.twz.com/air/kc-135-tanker-crashes-in-iraq-during-operation-epic-fury-sortie" },
+      { name: "CNN — 13일차", url: "https://www.cnn.com/world/live-news/iran-war-us-israel-trump-03-12-26" },
+      { name: "CNBC — S&P 최저", url: "https://www.cnbc.com/2026/03/12/stock-market-today-live-updates.html" }
+    ],
+    stats: { strikes: 2900, casualties: 4800, missiles: 2950, oil: 95, usDead: 13, cost: 5.1 }
+  },
+  {
+    id: 28, date: "2026-03-13", phase: "ongoing", tag: "military",
+    title: "하르그 섬 대규모 폭격 — 90+ 군사 목표, 석유는 보존",
+    desc: "트럼프가 이란 석유 수출의 90%를 담당하는 하르그 섬의 군사 목표 90곳 이상 폭격을 지시. 석유 인프라는 의도적으로 보존하되, 호르무즈 봉쇄 시 파괴 경고.",
+    details: [
+      "하르그 섬: 이란 석유 수출의 ~90% 담당, 본토에서 약 24km — 개전 후 2주간 타격 보류",
+      "군사 목표 90곳+ 타격: 육군 방어시설, 조센 해군기지, 공항 관제탑, 헬기 격납고",
+      "15회 이상 폭발, 대규모 검은 연기",
+      "트럼프: '중동 역사상 가장 강력한 폭격 중 하나 — 모든 군사 목표를 완전히 파괴했으나 석유 인프라는 의도적으로 보존'",
+      "트럼프 경고: '호르무즈 해협 통항 방해 시 석유 인프라 파괴도 즉각 재고할 것'",
+      "모지타바 하메네이 '심각한 부상' 추가 보도 — 헤그세스 국방장관이 부상 사실 공개",
+      "이란: 미국 연계 석유 시설을 '잿더미'로 만들겠다 위협"
+    ],
+    sources: [
+      { name: "Washington Post — 하르그 섬", url: "https://www.washingtonpost.com/politics/2026/03/13/trump-us-iran-war-kharg-island-oil/" },
+      { name: "CNBC — 군사 목표 파괴", url: "https://www.cnbc.com/2026/03/13/trump-says-us-obliterated-military-targets-on-irans-kharg-island-but-didnt-wipe-out-oil-infrastructure.html" },
+      { name: "Al Jazeera — 14일차", url: "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks" },
+      { name: "Al Jazeera — 유가 $100+", url: "https://www.aljazeera.com/economy/2026/3/13/oil-stays-above-100-a-barrel-amid-irans-stranglehold-on-strait-of-hormuz" },
+      { name: "Time — 장기전 전망", url: "https://time.com/article/2026/03/13/trump-iran-hormuz-oil-gas-war/" },
+      { name: "Al Jazeera — 모지타바 부상", url: "https://www.aljazeera.com/news/2026/3/13/us-hegseth-claims-irans-new-supreme-leader-mojtaba-khamenei-injured" }
+    ],
+    stats: { strikes: 3000, casualties: 5200, missiles: 3050, oil: 103, usDead: 13, cost: 5.4 }
+  },
+  {
+    id: 29, date: "2026-03-14", phase: "ongoing", tag: "military",
+    title: "전쟁 15일차 — 휴전 전망 없음 · 레바논 지상침공 계획",
+    desc: "IRGC가 UAE 소재 미군에 대한 위협을 경고. 펜타곤은 군사 작전 강화를 선언. 이스라엘의 레바논 대규모 지상침공 계획이 보도됨.",
+    details: [
+      "IRGC, UAE 소재 미군에 대한 공격 위협 경고",
+      "펜타곤, 군사 작전 강화 선언",
+      "이란: 미국 연계 석유 시설을 '잿더미'로 만들겠다 위협",
+      "모지타바 하메네이: 호르무즈 해협 봉쇄를 '적을 압박하는 도구'로 유지 주장",
+      "이스라엘, 레바논 대규모 지상침공 계획 보도",
+      "개전 이후 미국 5,000+ 목표 타격, 군함 60+ 파괴",
+      "이란 보건부: 1,444명 사망, 18,551명 부상",
+      "휴전 발효되거나 임박하지 않은 상태"
+    ],
+    sources: [
+      { name: "Al Jazeera — 실시간", url: "https://www.aljazeera.com/news/liveblog/2026/3/14/iran-war-live-pentagon-vows-to-ramp-up-us-military-campaign-against-iran" },
+      { name: "NPR — 비용·사상자", url: "https://www.npr.org/2026/03/14/nx-s1-5746623/iran-war-cost-deaths" },
+      { name: "CNN — 14일차 정리", url: "https://www.cnn.com/2026/03/13/middleeast/us-israel-iran-middle-east-war-what-we-know-intl-hnk" },
+      { name: "CFR — 분쟁 트래커", url: "https://www.cfr.org/global-conflict-tracker/conflict/confrontation-between-united-states-and-iran" },
+      { name: "Chatham House — 경제 영향", url: "https://www.chathamhouse.org/2026/03/how-will-iran-war-affect-global-economy" },
+      { name: "CNN — 레바논 지상침공", url: "https://www.cnn.com/2026/03/13/middleeast/israel-strikes-hezbollah-lebanon-intl-cmd" }
+    ],
+    stats: { strikes: 3000, casualties: 5500, missiles: 3100, oil: 105, usDead: 13, cost: 5.6 }
+  },
+  {
+    id: 30, date: "2026-03-15", phase: "ongoing", tag: "current",
+    title: "전쟁 16일차 — 이란, 걸프 전역 동시 공격 · 쿠웨이트 공군기지 피격",
+    desc: "이란이 사우디·UAE·카타르·쿠웨이트를 동시에 미사일·드론으로 공격. 쿠웨이트 아흐마드 알자베르 공군기지가 드론 2발에 피격되어 군인 3명 부상.",
+    details: [
+      "이란, 걸프 6개국(GCC) 전체를 동시 공격 — 역사상 최초",
+      "사우디, 리야드 포함 전역에서 드론 51대 요격·격추",
+      "UAE 푸자이라 벙커링 허브에 드론 잔해 낙하 → 화재 발생",
+      "카타르, 탄도미사일 4발 + 드론 다수 요격 성공",
+      "쿠웨이트 아흐마드 알자베르 공군기지, 드론 2발 피격 — 군인 3명 부상",
+      "레바논: 개전 이후 826명 사망(어린이 106명), 2,000명+ 부상, 병원 5곳 폐쇄",
+      "KC-135 공중급유기 이라크 서부 추락 — 미 공군 6명 전원 사망 (3/12 확인)",
+      "트럼프: '호르무즈 해협 통해 석유 받는 나라들이 항로 방어에 참여해야'"
+    ],
+    sources: [
+      { name: "Al Jazeera — 걸프 동시 공격", url: "https://www.aljazeera.com/news/2026/3/14/iran-continues-intensified-attacks-across-gulf-in-us-israel-war-fallout" },
+      { name: "ABC7 — 실시간 업데이트", url: "https://abc7news.com/live-updates/iran-war-news-live-updates-mojtaba-khamenei-chosen-irans-supreme-leader/18696218/" },
+      { name: "The National — 사우디 드론 50대", url: "https://www.thenationalnews.com/news/gulf/2026/03/13/saudi-arabia-targeted-with-50-drones-in-hours-as-iran-launches-new-wave-of-attacks-on-gulf/" },
+      { name: "CBS — 유가·KC-135 추락", url: "https://www.cbsnews.com/live-updates/iran-war-us-israel-gulf-allies-strait-of-hormuz-attacks-oil-prices-stocks/" },
+      { name: "CSIS — 이란 드론전 분석", url: "https://www.csis.org/analysis/unpacking-irans-drone-campaign-gulf-early-lessons-future-drone-warfare" }
+    ],
+    stats: { strikes: 3100, casualties: 5800, missiles: 3200, oil: 100, usDead: 19, cost: 5.9 }
+  }
+];
+
+const PHASE_INFO = {
+  prelude: { title: "전주곡: 충돌의 씨앗", period: "2025년 6월 — 2026년 1월", summary: "이스라엘-이란 교전, 미국의 이란 핵시설 공습, IAEA 협력 중단, 대규모 반정부 시위로 이어지는 위기의 고조." },
+  diplomacy: { title: "외교 협상: 마지막 기회", period: "2026년 2월 6일 — 2월 27일", summary: "오만 중재로 제네바에서 미·이란 핵 협상이 진행. '역사적 합의'에 대한 기대가 고조되었으나..." },
+  "war-start": { title: "전쟁 개시: Operation Epic Fury", period: "2026년 2월 28일", summary: "외교 협상의 이면에서 준비된 기습 공격. 12시간 만에 900회 공습, 최고지도자 사망." },
+  escalation: { title: "확전: 지역 전쟁으로", period: "2026년 3월 1일 — 3월 7일", summary: "이란의 대규모 보복, 레바논 전선 재개, 미 잠수함의 이란 함정 격침. 전쟁이 중동 전역으로 확산." },
+  ongoing: { title: "현재 진행: 출구 없는 전쟁", period: "2026년 3월 8일 — 현재", summary: "하르그 섬 폭격, 호르무즈 해협 봉쇄, 글로벌 에너지 위기. 휴전 전망 없음." }
+};
+
+// === ECONOMIC DATA ===
+const ECON_TIMELINE = [
+  { date: "2026-02-27", oil: 73, sp500: 6850, kospi: 5800, usdkrw: 1454, gold: 5296, bitcoin: 66500, gas: 2.94, lng_eu: 36, defense: 100 },
+  { date: "2026-02-28", oil: 82, sp500: 6780, kospi: 5650, usdkrw: 1472, gold: 5423, bitcoin: 67200, gas: 3.05, lng_eu: 42, defense: 105 },
+  { date: "2026-03-02", oil: 82, sp500: 6700, kospi: 5500, usdkrw: 1480, gold: 5350, bitcoin: 68000, gas: 3.15, lng_eu: 48, defense: 108 },
+  { date: "2026-03-03", oil: 83, sp500: 6650, kospi: 5400, usdkrw: 1488, gold: 5085, bitcoin: 68500, gas: 3.20, lng_eu: 55, defense: 110 },
+  { date: "2026-03-04", oil: 88, sp500: 6500, kospi: 5094, usdkrw: 1507, gold: 5150, bitcoin: 69000, gas: 3.28, lng_eu: 58, defense: 112 },
+  { date: "2026-03-05", oil: 83, sp500: 6420, kospi: 5200, usdkrw: 1498, gold: 5180, bitcoin: 69500, gas: 3.32, lng_eu: 60, defense: 115 },
+  { date: "2026-03-06", oil: 83, sp500: 6380, kospi: 5150, usdkrw: 1502, gold: 5200, bitcoin: 69800, gas: 3.35, lng_eu: 61, defense: 116 },
+  { date: "2026-03-09", oil: 120, sp500: 6350, kospi: 4900, usdkrw: 1510, gold: 5220, bitcoin: 70500, gas: 3.45, lng_eu: 64, defense: 118 },
+  { date: "2026-03-10", oil: 90, sp500: 6776, kospi: 5533, usdkrw: 1495, gold: 5200, bitcoin: 71000, gas: 3.50, lng_eu: 60, defense: 116 },
+  { date: "2026-03-12", oil: 95, sp500: 6632, kospi: 5300, usdkrw: 1498, gold: 5240, bitcoin: 70800, gas: 3.55, lng_eu: 62, defense: 120 },
+  { date: "2026-03-13", oil: 103, sp500: 6530, kospi: 5150, usdkrw: 1501, gold: 5250, bitcoin: 71200, gas: 3.58, lng_eu: 63, defense: 125 },
+  { date: "2026-03-14", oil: 105, sp500: 6500, kospi: 5100, usdkrw: 1505, gold: 5260, bitcoin: 71500, gas: 3.60, lng_eu: 64, defense: 128 },
+  { date: "2026-03-15", oil: 100, sp500: 6632, kospi: 5487, usdkrw: 1483, gold: 5186, bitcoin: 72395, gas: 3.58, lng_eu: 62, defense: 126 }
+];
+
+const ECON_CATEGORIES = {
+  energy: { label: "에너지", color: "#c45500", icon: "🛢️" },
+  stocks: { label: "주식시장", color: "#c0392b", icon: "📉" },
+  shipping: { label: "해운·물류", color: "#2c6fbb", icon: "🚢" },
+  korea: { label: "한국경제", color: "#27864a", icon: "🇰🇷" },
+  defense: { label: "방산", color: "#7b3fa0", icon: "🪖" },
+  asia: { label: "아시아", color: "#b8860b", icon: "🌏" }
+};

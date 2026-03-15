@@ -1,0 +1,132 @@
+<h2>대시보드 홈 레이아웃</h2>
+<p class="subtitle">토픽 목록 + 글로벌 지표를 보여주는 메인 화면 구조</p>
+
+<div class="cards">
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#1a1a1a;">
+      <div style="font-family:monospace;color:#aaa;font-size:11px;line-height:1.6;">
+        <div style="background:#222;padding:8px 12px;margin-bottom:8px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="color:#fff;font-weight:bold;font-size:13px;">WORLD CHRONICLE</span>
+          <span style="color:#666;font-size:10px;">글로벌 이슈 트래커</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <div style="flex:1;background:#1e2a1e;padding:6px 8px;border-radius:4px;border-left:3px solid #c0392b;">
+            <div style="color:#c0392b;font-size:9px;">ACTIVE CONFLICTS</div>
+            <div style="color:#fff;font-size:16px;font-weight:bold;">3</div>
+          </div>
+          <div style="flex:1;background:#2a2a1e;padding:6px 8px;border-radius:4px;border-left:3px solid #e8590c;">
+            <div style="color:#e8590c;font-size:9px;">OIL $/BBL</div>
+            <div style="color:#fff;font-size:16px;font-weight:bold;">$100</div>
+          </div>
+          <div style="flex:1;background:#1e1e2a;padding:6px 8px;border-radius:4px;border-left:3px solid #3498db;">
+            <div style="color:#3498db;font-size:9px;">S&P 500</div>
+            <div style="color:#fff;font-size:16px;font-weight:bold;">6,632</div>
+          </div>
+          <div style="flex:1;background:#2a1e1e;padding:6px 8px;border-radius:4px;border-left:3px solid #e8b006;">
+            <div style="color:#e8b006;font-size:9px;">GOLD</div>
+            <div style="color:#fff;font-size:16px;font-weight:bold;">$5,186</div>
+          </div>
+        </div>
+        <div style="color:#666;font-size:9px;margin-bottom:4px;text-transform:uppercase;">Active Topics</div>
+        <div style="background:#222;padding:10px;border-radius:4px;margin-bottom:6px;border-left:3px solid #c0392b;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="color:#c0392b;font-size:8px;background:#3a1e1e;padding:1px 4px;border-radius:2px;">ONGOING</span>
+              <div style="color:#fff;font-size:12px;font-weight:bold;margin-top:2px;">미국 vs 이란 전쟁</div>
+              <div style="color:#888;font-size:9px;">DAY 16 · 사상자 5,800 · 유가 $100</div>
+            </div>
+            <div style="color:#444;font-size:18px;">→</div>
+          </div>
+        </div>
+        <div style="background:#222;padding:10px;border-radius:4px;margin-bottom:6px;border-left:3px solid #e67e22;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="color:#e67e22;font-size:8px;background:#3a2a1e;padding:1px 4px;border-radius:2px;">DEVELOPING</span>
+              <div style="color:#fff;font-size:12px;font-weight:bold;margin-top:2px;">글로벌 에너지 위기</div>
+              <div style="color:#888;font-size:9px;">호르무즈 봉쇄 · LNG +77% · 유럽 비상</div>
+            </div>
+            <div style="color:#444;font-size:18px;">→</div>
+          </div>
+        </div>
+        <div style="background:#222;padding:10px;border-radius:4px;border-left:3px solid #888;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <span style="color:#888;font-size:8px;background:#2a2a2a;padding:1px 4px;border-radius:2px;">ARCHIVED</span>
+              <div style="color:#fff;font-size:12px;font-weight:bold;margin-top:2px;">2025 이스라엘-이란 교전</div>
+              <div style="color:#888;font-size:9px;">12일 교전 · 610명 사망 · 휴전</div>
+            </div>
+            <div style="color:#444;font-size:18px;">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 리스트 중심</h3>
+      <p>상단에 글로벌 KPI 바, 아래에 토픽 카드 리스트. 한 줄에 하나씩, 스캔하기 쉬움. 모바일 친화적.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#1a1a1a;">
+      <div style="font-family:monospace;color:#aaa;font-size:11px;line-height:1.6;">
+        <div style="background:#222;padding:8px 12px;margin-bottom:8px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="color:#fff;font-weight:bold;font-size:13px;">WORLD CHRONICLE</span>
+          <span style="color:#666;font-size:10px;">글로벌 이슈 트래커</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#222;padding:10px;border-radius:4px;border-top:3px solid #c0392b;">
+            <span style="color:#c0392b;font-size:8px;background:#3a1e1e;padding:1px 4px;border-radius:2px;">ONGOING · DAY 16</span>
+            <div style="color:#fff;font-size:13px;font-weight:bold;margin:4px 0;">미국 vs 이란 전쟁</div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+              <div><div style="color:#666;font-size:8px;">사상자</div><div style="color:#c0392b;font-size:12px;font-weight:bold;">5,800</div></div>
+              <div><div style="color:#666;font-size:8px;">유가</div><div style="color:#e8590c;font-size:12px;font-weight:bold;">$100</div></div>
+              <div><div style="color:#666;font-size:8px;">미군</div><div style="color:#8e44ad;font-size:12px;font-weight:bold;">19명</div></div>
+            </div>
+            <div style="margin-top:6px;height:20px;background:#2a1e1e;border-radius:2px;overflow:hidden;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:8px;">미니 차트</div>
+            </div>
+          </div>
+          <div style="background:#222;padding:10px;border-radius:4px;border-top:3px solid #e67e22;">
+            <span style="color:#e67e22;font-size:8px;background:#3a2a1e;padding:1px 4px;border-radius:2px;">DEVELOPING</span>
+            <div style="color:#fff;font-size:13px;font-weight:bold;margin:4px 0;">글로벌 에너지 위기</div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+              <div><div style="color:#666;font-size:8px;">LNG</div><div style="color:#e67e22;font-size:12px;font-weight:bold;">+77%</div></div>
+              <div><div style="color:#666;font-size:8px;">통항</div><div style="color:#c0392b;font-size:12px;font-weight:bold;">5척/일</div></div>
+            </div>
+            <div style="margin-top:6px;height:20px;background:#2a2a1e;border-radius:2px;overflow:hidden;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:8px;">미니 차트</div>
+            </div>
+          </div>
+          <div style="background:#222;padding:10px;border-radius:4px;border-top:3px solid #2ecc71;">
+            <span style="color:#2ecc71;font-size:8px;background:#1e3a1e;padding:1px 4px;border-radius:2px;">MONITORING</span>
+            <div style="color:#fff;font-size:13px;font-weight:bold;margin:4px 0;">한국 경제 영향</div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+              <div><div style="color:#666;font-size:8px;">KOSPI</div><div style="color:#c0392b;font-size:12px;font-weight:bold;">-5.4%</div></div>
+              <div><div style="color:#666;font-size:8px;">원/달러</div><div style="color:#e67e22;font-size:12px;font-weight:bold;">1,494</div></div>
+            </div>
+            <div style="margin-top:6px;height:20px;background:#1e2a1e;border-radius:2px;overflow:hidden;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:8px;">미니 차트</div>
+            </div>
+          </div>
+          <div style="background:#222;padding:10px;border-radius:4px;border-top:3px solid #888;">
+            <span style="color:#888;font-size:8px;background:#2a2a2a;padding:1px 4px;border-radius:2px;">ARCHIVED</span>
+            <div style="color:#fff;font-size:13px;font-weight:bold;margin:4px 0;">2025 이스라엘-이란</div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+              <div><div style="color:#666;font-size:8px;">사망</div><div style="color:#888;font-size:12px;font-weight:bold;">610</div></div>
+              <div><div style="color:#666;font-size:8px;">기간</div><div style="color:#888;font-size:12px;font-weight:bold;">12일</div></div>
+            </div>
+            <div style="margin-top:6px;height:20px;background:#2a2a2a;border-radius:2px;overflow:hidden;position:relative;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:8px;">미니 차트</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 그리드 대시보드</h3>
+      <p>토픽별 카드에 핵심 KPI + 미니 차트 포함. 한눈에 여러 토픽 비교 가능. 정보 밀도 높음.</p>
+    </div>
+  </div>
+</div>

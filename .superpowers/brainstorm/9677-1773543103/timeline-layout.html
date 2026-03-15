@@ -1,0 +1,129 @@
+<h2>타임라인 상세 페이지 레이아웃</h2>
+<p class="subtitle">토픽 클릭 후 진입하는 상세 화면 — 현재 서비스 기반 개선</p>
+
+<div class="cards">
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:12px;background:#1a1a1a;">
+      <div style="font-family:monospace;color:#aaa;font-size:10px;line-height:1.5;">
+        <div style="background:#222;padding:6px 10px;margin-bottom:6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="color:#fff;font-size:11px;">← 대시보드 &nbsp; <b>미국 vs 이란 전쟁</b></span>
+          <span style="color:#c0392b;font-size:9px;">DAY 16 · 5,800 · $100</span>
+        </div>
+        <div style="background:#2a1e1e;padding:4px 10px;border-radius:3px;margin-bottom:6px;display:flex;gap:6px;align-items:center;overflow:hidden;">
+          <span style="color:#666;font-size:8px;white-space:nowrap;">전주곡</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#666;font-size:8px;white-space:nowrap;">외교</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#c0392b;font-size:8px;white-space:nowrap;">개전</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#e67e22;font-size:8px;white-space:nowrap;">확전</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#fff;font-size:8px;font-weight:bold;white-space:nowrap;">현재 ●</span>
+          <div style="flex:1"></div>
+          <span style="color:#444;font-size:8px;">◀ ▶ ▶▶</span>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <div style="width:30%;background:#222;border-radius:4px;padding:6px;font-size:8px;">
+            <div style="color:#666;margin-bottom:4px;">EVENTS</div>
+            <div style="background:#2a2a2a;padding:3px 5px;border-radius:2px;margin-bottom:3px;border-left:2px solid #c0392b;color:#ccc;">3/15 걸프 동시공격</div>
+            <div style="background:#2a2a2a;padding:3px 5px;border-radius:2px;margin-bottom:3px;border-left:2px solid #888;color:#888;">3/14 휴전전망없음</div>
+            <div style="background:#2a2a2a;padding:3px 5px;border-radius:2px;margin-bottom:3px;border-left:2px solid #888;color:#888;">3/13 하르그섬폭격</div>
+            <div style="background:#2a2a2a;padding:3px 5px;border-radius:2px;border-left:2px solid #888;color:#888;">3/12 이란미사일</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+            <div style="background:#222;border-radius:4px;padding:8px;">
+              <div style="color:#c0392b;font-size:8px;">Mar 15, 2026 · 군사</div>
+              <div style="color:#fff;font-size:11px;font-weight:bold;margin:2px 0;">전쟁 16일차 — 걸프 전역 동시 공격</div>
+              <div style="color:#888;font-size:9px;">이란이 사우디·UAE·카타르·쿠웨이트를 동시에...</div>
+              <div style="display:flex;gap:6px;margin-top:6px;">
+                <div style="background:#2a2a2a;padding:3px 6px;border-radius:2px;text-align:center;"><div style="color:#c0392b;font-size:11px;font-weight:bold;">3,100</div><div style="color:#666;font-size:7px;">공습</div></div>
+                <div style="background:#2a2a2a;padding:3px 6px;border-radius:2px;text-align:center;"><div style="color:#c0392b;font-size:11px;font-weight:bold;">5,800</div><div style="color:#666;font-size:7px;">사상자</div></div>
+                <div style="background:#2a2a2a;padding:3px 6px;border-radius:2px;text-align:center;"><div style="color:#e8590c;font-size:11px;font-weight:bold;">$100</div><div style="color:#666;font-size:7px;">유가</div></div>
+                <div style="background:#2a2a2a;padding:3px 6px;border-radius:2px;text-align:center;"><div style="color:#8e44ad;font-size:11px;font-weight:bold;">19</div><div style="color:#666;font-size:7px;">미군</div></div>
+              </div>
+            </div>
+            <div style="background:#222;border-radius:4px;padding:8px;">
+              <div style="color:#666;font-size:8px;">경제 충격파 — DAY 16</div>
+              <div style="height:40px;background:#2a2a2a;border-radius:3px;margin-top:4px;display:flex;align-items:center;justify-content:center;color:#444;font-size:8px;">차트 영역</div>
+              <div style="display:flex;gap:4px;margin-top:4px;">
+                <span style="color:#c0392b;font-size:8px;background:#2a1e1e;padding:1px 4px;border-radius:2px;">유가 +37%</span>
+                <span style="color:#2ecc71;font-size:8px;background:#1e2a1e;padding:1px 4px;border-radius:2px;">KOSPI -5.4%</span>
+                <span style="color:#3498db;font-size:8px;background:#1e1e2a;padding:1px 4px;border-radius:2px;">S&P -3.2%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 현재 구조 유지 (개선)</h3>
+      <p>현재 서비스와 동일한 3컬럼(사이드바+상세+차트). 뒤로가기로 대시보드 복귀. 검증된 UX 유지.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:12px;background:#1a1a1a;">
+      <div style="font-family:monospace;color:#aaa;font-size:10px;line-height:1.5;">
+        <div style="background:#222;padding:6px 10px;margin-bottom:6px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="color:#fff;font-size:11px;">← 대시보드 &nbsp; <b>미국 vs 이란 전쟁</b></span>
+          <span style="color:#c0392b;font-size:9px;">DAY 16 · 5,800 · $100</span>
+        </div>
+        <div style="background:#2a1e1e;padding:4px 10px;border-radius:3px;margin-bottom:6px;display:flex;gap:6px;align-items:center;">
+          <span style="color:#666;font-size:8px;">전주곡</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#666;font-size:8px;">외교</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#c0392b;font-size:8px;">개전</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#e67e22;font-size:8px;">확전</span>
+          <span style="color:#888;font-size:8px;">|</span>
+          <span style="color:#fff;font-size:8px;font-weight:bold;">현재 ●</span>
+          <div style="flex:1"></div>
+          <span style="color:#444;font-size:8px;">◀ ▶ ▶▶</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;gap:6px;">
+            <div style="flex:1;background:#222;border-radius:4px;padding:8px;">
+              <div style="color:#c0392b;font-size:8px;">Mar 15, 2026 · 군사</div>
+              <div style="color:#fff;font-size:11px;font-weight:bold;margin:2px 0;">전쟁 16일차 — 걸프 전역 동시 공격</div>
+              <div style="color:#888;font-size:9px;margin-bottom:6px;">이란이 사우디·UAE·카타르·쿠웨이트를 동시에 미사일·드론으로 공격...</div>
+              <div style="color:#666;font-size:8px;margin-bottom:3px;">• 걸프 6개국(GCC) 전체 동시 공격 — 역사상 최초</div>
+              <div style="color:#666;font-size:8px;margin-bottom:3px;">• 사우디, 드론 51대 요격·격추</div>
+              <div style="color:#666;font-size:8px;">• 쿠웨이트 공군기지 드론 2발 피격</div>
+            </div>
+            <div style="width:35%;display:flex;flex-direction:column;gap:6px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                <div style="background:#222;padding:4px 6px;border-radius:3px;text-align:center;"><div style="color:#c0392b;font-size:13px;font-weight:bold;">3,100</div><div style="color:#666;font-size:7px;">공습</div></div>
+                <div style="background:#222;padding:4px 6px;border-radius:3px;text-align:center;"><div style="color:#c0392b;font-size:13px;font-weight:bold;">5,800</div><div style="color:#666;font-size:7px;">사상자</div></div>
+                <div style="background:#222;padding:4px 6px;border-radius:3px;text-align:center;"><div style="color:#e8590c;font-size:13px;font-weight:bold;">$100</div><div style="color:#666;font-size:7px;">유가</div></div>
+                <div style="background:#222;padding:4px 6px;border-radius:3px;text-align:center;"><div style="color:#8e44ad;font-size:13px;font-weight:bold;">19</div><div style="color:#666;font-size:7px;">미군</div></div>
+              </div>
+              <div style="background:#222;border-radius:4px;padding:6px;flex:1;">
+                <div style="color:#666;font-size:8px;margin-bottom:2px;">출처</div>
+                <div style="color:#3498db;font-size:8px;">Al Jazeera</div>
+                <div style="color:#3498db;font-size:8px;">ABC7</div>
+                <div style="color:#3498db;font-size:8px;">CBS News</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#222;border-radius:4px;padding:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="color:#666;font-size:8px;">경제 충격파 — DAY 16</span>
+              <div style="display:flex;gap:4px;">
+                <span style="color:#c0392b;font-size:8px;background:#2a1e1e;padding:1px 4px;border-radius:2px;">유가 +37%</span>
+                <span style="color:#2ecc71;font-size:8px;background:#1e2a1e;padding:1px 4px;border-radius:2px;">KOSPI -5.4%</span>
+              </div>
+            </div>
+            <div style="height:50px;background:#2a2a2a;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#444;font-size:8px;">차트 영역 (더 넓은 공간)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 풀 와이드 (사이드바 제거)</h3>
+      <p>사이드바 없이 전체 폭 사용. 이벤트는 타임라인 스트립으로만 탐색. 상세+통계+차트가 넓게 펼쳐짐. 차트 공간 극대화.</p>
+    </div>
+  </div>
+</div>
