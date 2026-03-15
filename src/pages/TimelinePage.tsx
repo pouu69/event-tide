@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTopicData, useEventNavigation, useKeyboardNav } from '../hooks';
 import TopBar from '../components/timeline/TopBar';
@@ -18,12 +18,15 @@ export default function TimelinePage() {
 
   useKeyboardNav({ next, prev, togglePlay, stopPlay });
 
-  // Deep link: read ?event=N on mount
+  const fromUrl = useRef(false);
+
+  // Deep link: read ?event=N on mount (1-indexed in URL)
   useEffect(() => {
     const eventParam = searchParams.get('event');
     if (eventParam != null && events.length > 0) {
-      const idx = parseInt(eventParam, 10);
+      const idx = parseInt(eventParam, 10) - 1; // URL is 1-indexed
       if (!isNaN(idx) && idx >= 0 && idx < events.length) {
+        fromUrl.current = true;
         goTo(idx);
       }
     }
@@ -31,10 +34,14 @@ export default function TimelinePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events.length]);
 
-  // Sync URL on navigation
+  // Sync URL on navigation (1-indexed in URL)
   useEffect(() => {
     if (events.length === 0) return;
-    setSearchParams({ event: String(currentIndex) }, { replace: true });
+    if (fromUrl.current) {
+      fromUrl.current = false;
+      return;
+    }
+    setSearchParams({ event: String(currentIndex + 1) }, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, events.length]);
 

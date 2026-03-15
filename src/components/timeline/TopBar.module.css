@@ -114,6 +114,16 @@
   background: var(--border);
 }
 
+@media (max-width: 768px) {
+  .right {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .divider {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .right .stat { display: none; }
   .topbar { padding: 0 1rem; }

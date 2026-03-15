@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.strip-track-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.strip-track-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 :root {
   --bg: #faf8f5;
   --bg-card: #ffffff;

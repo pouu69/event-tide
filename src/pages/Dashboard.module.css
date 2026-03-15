@@ -42,3 +42,15 @@
 .error {
   color: var(--accent, #c0392b);
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
