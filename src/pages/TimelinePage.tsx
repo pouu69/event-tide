@@ -6,6 +6,7 @@ import TimelineStrip from '../components/timeline/TimelineStrip';
 import EventSidebar from '../components/timeline/EventSidebar';
 import EventDetail from '../components/timeline/EventDetail';
 import EconPanel from '../components/timeline/EconPanel';
+import InvestSimPanel from '../components/timeline/InvestSimPanel';
 import s from './TimelinePage.module.css';
 
 export default function TimelinePage() {
@@ -80,8 +81,9 @@ export default function TimelinePage() {
       <div className={s.main}>
         <EventSidebar events={events} currentIndex={currentIndex} onGoTo={goTo} meta={meta} />
         <div className={s.detailView}>
-          <EventDetail event={currentEvent} meta={meta} econ={econ} />
-          <EconPanel meta={meta} econ={econ} currentDate={currentEvent.date} />
+          <EventDetail event={currentEvent} meta={meta} econ={econ} events={events} currentIndex={currentIndex} />
+          <EconPanel meta={meta} econ={econ} currentDate={currentEvent.date} events={events} />
+          <InvestSimPanel meta={meta} econ={econ} currentDate={currentEvent.date} />
         </div>
       </div>
     </div>

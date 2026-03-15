@@ -1,0 +1,81 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+.header h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+}
+.sub {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  gap: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1.2fr 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+.headerRow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.4rem;
+}
+
+.metricName {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pct {
+  font-weight: 800;
+}
+.pos .pct { color: var(--green, #27ae60); }
+.neg .pct { color: var(--accent, #c0392b); }
+
+.amount {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gain {
+  font-weight: 700;
+}
+.pos .gain { color: var(--green, #27ae60); }
+.neg .gain { color: var(--accent, #c0392b); }
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 0.7fr 1fr 0.9fr;
+    font-size: 0.7rem;
+  }
+}
