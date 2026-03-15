@@ -1,0 +1,260 @@
+/* ═══════════════════════════════════════════
+   BI Analyst Briefing Panel
+   Editorial briefing style
+   ═══════════════════════════════════════════ */
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  overflow: visible;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.headerTitle {
+  font-family: 'DM Sans', var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.riskBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'DM Sans', var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  color: #fff;
+}
+.riskBadge.low { background: var(--green); }
+.riskBadge.medium { background: var(--orange); }
+.riskBadge.high { background: var(--accent); }
+.riskBadge.extreme { background: #7f1d1d; }
+
+.riskDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Content ── */
+.content {
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ── Section shared ── */
+.sectionLabel {
+  font-family: 'DM Sans', var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Situation Summary ── */
+.summary {
+  background: var(--bg-warm);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.summary strong {
+  color: var(--accent);
+}
+
+/* ── Risk Meter ── */
+.riskMeter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.meterBar {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    var(--green) 0%,
+    #f59e0b 35%,
+    var(--orange) 55%,
+    var(--accent) 75%,
+    #7f1d1d 100%
+  );
+  overflow: visible;
+}
+.meterMarker {
+  position: absolute;
+  top: -3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid var(--text);
+  transform: translateX(-50%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
+}
+.meterLabels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DM Sans', var(--font-ui);
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ── Signals ── */
+.signalList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.signal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 5px;
+  border-left: 3px solid transparent;
+  background: var(--bg-warm);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.signal.riskOff { border-left-color: var(--accent); }
+.signal.safeHaven { border-left-color: var(--gold); }
+.signal.sector { border-left-color: var(--blue); }
+.signal.neutral { border-left-color: var(--text-muted); }
+
+.signalPct {
+  margin-left: auto;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.signalPct.up { color: var(--green); }
+.signalPct.down { color: var(--accent); }
+
+/* ── Event Pattern ── */
+.patternCard {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+}
+.patternTag {
+  display: inline-block;
+  font-family: 'DM Sans', var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--blue);
+  background: rgba(44, 111, 187, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.patternAvgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+.patternAvg {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-warm);
+}
+.patternAvg.up { color: var(--green); }
+.patternAvg.down { color: var(--accent); }
+
+.patternCommentary {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Outlook ── */
+.outlookList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.outlookItem {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.outlookItem::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-size: 0.7rem;
+}
+
+/* ── Contrarian Notes ── */
+.contrarianList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.contrarianNote {
+  position: relative;
+  padding: 0.55rem 0.8rem 0.55rem 1rem;
+  border-left: 2px solid var(--gold);
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  background: rgba(184, 134, 11, 0.03);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Empty ── */
+.empty {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1.5rem 0;
+}

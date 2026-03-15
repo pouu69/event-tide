@@ -8,7 +8,9 @@ import InsightCard from '../components/timeline/InsightCard';
 import EventDetail from '../components/timeline/EventDetail';
 import EconPanel from '../components/timeline/EconPanel';
 import VixSignalPanel from '../components/timeline/VixSignalPanel';
+import BIPanel from '../components/timeline/BIPanel';
 import AnalysisPanel from '../components/timeline/AnalysisPanel';
+import CollapsibleSection from '../components/timeline/CollapsibleSection';
 import { generateInsight } from '../lib/storytelling';
 import s from './TimelinePage.module.css';
 
@@ -84,15 +86,28 @@ export default function TimelinePage() {
       <div className={s.main}>
         <EventSidebar events={events} currentIndex={currentIndex} onGoTo={goTo} meta={meta} />
         <div className={s.detailView}>
-          <InsightCard insight={generateInsight(
-            currentEvent,
-            currentIndex > 0 ? events[currentIndex - 1] : null,
-            meta, econ, events, currentIndex
-          )} />
-          <EventDetail event={currentEvent} meta={meta} econ={econ} events={events} currentIndex={currentIndex} />
-          <EconPanel meta={meta} econ={econ} currentDate={currentEvent.date} events={events} />
-          <VixSignalPanel econ={econ} currentDate={currentEvent.date} />
-          <AnalysisPanel meta={meta} econ={econ} events={events} currentEvent={currentEvent} currentIndex={currentIndex} />
+          <CollapsibleSection title="인사이트" defaultOpen>
+            <InsightCard insight={generateInsight(
+              currentEvent,
+              currentIndex > 0 ? events[currentIndex - 1] : null,
+              meta, econ, events, currentIndex
+            )} />
+          </CollapsibleSection>
+          <CollapsibleSection title="이벤트 상세" defaultOpen>
+            <EventDetail event={currentEvent} meta={meta} econ={econ} events={events} currentIndex={currentIndex} />
+          </CollapsibleSection>
+          <CollapsibleSection title="경제 지표" defaultOpen>
+            <EconPanel meta={meta} econ={econ} currentDate={currentEvent.date} events={events} />
+          </CollapsibleSection>
+          <CollapsibleSection title="VIX 시그널" defaultOpen={false}>
+            <VixSignalPanel econ={econ} currentDate={currentEvent.date} />
+          </CollapsibleSection>
+          <CollapsibleSection title="애널리스트 브리핑" defaultOpen>
+            <BIPanel meta={meta} econ={econ} events={events} currentEvent={currentEvent} currentIndex={currentIndex} />
+          </CollapsibleSection>
+          <CollapsibleSection title="데이터 분석" defaultOpen={false}>
+            <AnalysisPanel meta={meta} econ={econ} events={events} currentEvent={currentEvent} currentIndex={currentIndex} />
+          </CollapsibleSection>
         </div>
       </div>
     </div>
