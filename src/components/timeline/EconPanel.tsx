@@ -1,5 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
-import type { TopicMeta, EconDataPoint } from '../../types';
+import type { TopicMeta, TopicEvent, EconDataPoint } from '../../types';
 import { pctChange, getNearestEconData } from '../../lib/utils';
 import { drawChart } from '../../lib/drawChart';
 import type { ChartDataset } from '../../lib/drawChart';
@@ -9,6 +9,7 @@ interface Props {
   meta: TopicMeta;
   econ: EconDataPoint[];
   currentDate: string;
+  events?: TopicEvent[];
 }
 
 const DAY_MS = 86400000;
@@ -24,7 +25,7 @@ function getEconDataUpTo(dateStr: string, econ: EconDataPoint[]): EconDataPoint[
   return filtered.length >= 2 ? filtered : econ.slice(0, 2);
 }
 
-export default function EconPanel({ meta, econ, currentDate }: Props) {
+export default function EconPanel({ meta, econ, currentDate, events }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -41,6 +42,12 @@ export default function EconPanel({ meta, econ, currentDate }: Props) {
 
   const chartData = getEconDataUpTo(currentDate, econ);
 
+  // Build event markers from significant events
+  const eventMarkers = (events || [])
+    .filter(e => e.tag === 'military' || e.tag === 'crisis')
+    .slice(0, 5)
+    .map(e => ({ date: e.date, label: e.title }));
+
   // Draw chart
   const renderChart = useCallback((hover?: number) => {
     const canvas = canvasRef.current;
@@ -55,8 +62,9 @@ export default function EconPanel({ meta, econ, currentDate }: Props) {
       canvas.height = 300;
     }
 
-    drawChart(ctx, canvas, datasets, chartData, hover, meta.startDate);
-  }, [datasets, chartData, meta.startDate]);
+    drawChart(ctx, canvas, datasets, chartData, hover, meta.startDate, eventMarkers);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [datasets, chartData, meta.startDate, JSON.stringify(eventMarkers)]);
 
   useEffect(() => {
     renderChart();

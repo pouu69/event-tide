@@ -15,6 +15,7 @@ export function drawChart(
   data: EconDataPoint[],
   hoverIndex?: number,
   warStartDate?: string,
+  eventMarkers?: { date: string; label: string }[],
 ): void {
   const W = canvas.width;
   const H = canvas.height;
@@ -100,6 +101,46 @@ export function drawChart(
       ctx.textAlign = 'center';
       ctx.fillText('WAR', x, pad.top - 6);
     }
+  }
+
+  // Event markers
+  if (eventMarkers && eventMarkers.length > 0) {
+    const markers = eventMarkers.slice(0, 5);
+    markers.forEach(marker => {
+      const mIdx = dates.indexOf(marker.date);
+      // Find nearest date if exact match not found
+      let x: number;
+      if (mIdx >= 0) {
+        x = toX(mIdx);
+      } else {
+        // Find closest date
+        let closest = 0;
+        for (let i = 1; i < dates.length; i++) {
+          if (dates[i] <= marker.date) closest = i;
+        }
+        x = toX(closest);
+      }
+      // Dashed vertical line
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+      ctx.setLineDash([3, 3]);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.top);
+      ctx.lineTo(x, pad.top + chartH);
+      ctx.stroke();
+      ctx.restore();
+      // Rotated label at bottom
+      ctx.save();
+      ctx.fillStyle = '#918a82';
+      ctx.font = '500 7px DM Sans, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.translate(x + 2, pad.top + chartH + 28);
+      ctx.rotate(-Math.PI / 6);
+      const labelText = marker.label.length > 12 ? marker.label.slice(0, 12) + '..' : marker.label;
+      ctx.fillText(labelText, 0, 0);
+      ctx.restore();
+    });
   }
 
   // Hover crosshair
