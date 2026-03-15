@@ -1,15 +1,18 @@
 import { useRef, useEffect } from 'react';
 import type { TopicMeta, TopicEvent, EconDataPoint } from '../../types';
 import { formatDateLong, getTagLabel, getNearestEconData } from '../../lib/utils';
+import MiniTrend from '../common/MiniTrend';
 import s from './EventDetail.module.css';
 
 interface Props {
   event: TopicEvent;
   meta: TopicMeta;
   econ: EconDataPoint[];
+  events: TopicEvent[];
+  currentIndex: number;
 }
 
-export default function EventDetail({ event, meta, econ }: Props) {
+export default function EventDetail({ event, meta, econ, events, currentIndex }: Props) {
   const detailRef = useRef<HTMLDivElement>(null);
 
   // Trigger entry animation on event change
@@ -22,13 +25,20 @@ export default function EventDetail({ event, meta, econ }: Props) {
     el.classList.add(s.animIn);
   }, [event.id]);
 
+  // Previous event for delta computation
+  const prevEvent = currentIndex > 0 ? events[currentIndex - 1] : null;
+  const prevEconPoint = prevEvent ? getNearestEconData(prevEvent.date, econ) : null;
+
   // Build stats from meta.statsFields
   const econPoint = getNearestEconData(event.date, econ);
+  const econKeys = new Set(['oil', 'kospi', 'sp500']);
+
   const stats = meta.statsFields.map(sf => {
     let value: string;
     const raw = event.metrics[sf.key];
-    if (sf.key === 'oil' || sf.key === 'kospi' || sf.key === 'sp500') {
-      // econ-sourced values
+    const isEconKey = econKeys.has(sf.key);
+
+    if (isEconKey) {
       const v = econPoint ? econPoint[sf.key] : null;
       value = v != null ? (sf.key === 'oil' ? `$${v}` : `${Number(v).toLocaleString()}`) : '—';
     } else if (sf.key === 'cost') {
@@ -36,8 +46,63 @@ export default function EventDetail({ event, meta, econ }: Props) {
     } else {
       value = raw != null ? Number(raw).toLocaleString() : '—';
     }
-    return { ...sf, value };
+
+    // Delta computation
+    let delta: number | null = null;
+    if (prevEvent) {
+      if (isEconKey) {
+        const curVal = econPoint ? Number(econPoint[sf.key]) : null;
+        const prevVal = prevEconPoint ? Number(prevEconPoint[sf.key]) : null;
+        if (curVal != null && prevVal != null && !isNaN(curVal) && !isNaN(prevVal)) {
+          delta = curVal - prevVal;
+        }
+      } else {
+        const curVal = event.metrics[sf.key];
+        const prevVal = prevEvent.metrics[sf.key];
+        if (curVal != null && prevVal != null) {
+          delta = curVal - prevVal;
+        }
+      }
+    }
+
+    // MiniTrend data: last 7 events ending at currentIndex
+    const trendStart = Math.max(0, currentIndex - 6);
+    const trendData: number[] = [];
+    for (let i = trendStart; i <= currentIndex; i++) {
+      if (isEconKey) {
+        const ep = getNearestEconData(events[i].date, econ);
+        const v = ep ? Number(ep[sf.key]) : NaN;
+        trendData.push(isNaN(v) ? 0 : v);
+      } else {
+        const v = events[i].metrics[sf.key];
+        trendData.push(v != null ? v : 0);
+      }
+    }
+
+    return { ...sf, value, delta, trendData };
   });
+
+  // Market reaction section
+  const econNow = getNearestEconData(event.date, econ);
+  const econNext = econ.find(d => (d.date as string) > event.date);
+  const marketReactions: { label: string; pct: string; isNeg: boolean }[] = [];
+
+  if (econNow && econNext) {
+    meta.metricDefs
+      .filter(m => m.showOnDetail)
+      .forEach(m => {
+        const valNow = Number(econNow[m.key]);
+        const valNext = Number(econNext[m.key]);
+        if (!isNaN(valNow) && !isNaN(valNext) && valNow !== 0) {
+          const pctVal = ((valNext - valNow) / valNow) * 100;
+          marketReactions.push({
+            label: m.label,
+            pct: `${pctVal > 0 ? '+' : ''}${pctVal.toFixed(1)}%`,
+            isNeg: pctVal < 0,
+          });
+        }
+      });
+  }
 
   return (
     <div className={s.card} ref={detailRef}>
@@ -72,11 +137,33 @@ export default function EventDetail({ event, meta, econ }: Props) {
       <div className={s.statsGrid}>
         {stats.map(st => (
           <div key={st.key} className={s.ss}>
-            <span className={s.ssVal} style={{ color: st.color }}>{st.value}</span>
+            <div className={s.ssTop}>
+              <span className={s.ssVal} style={{ color: st.color }}>{st.value}</span>
+              {st.trendData.length >= 2 && (
+                <MiniTrend data={st.trendData} color={st.color} />
+              )}
+            </div>
             <span className={s.ssLabel}>{st.label}</span>
+            {st.delta != null && st.delta !== 0 && (
+              <span className={st.delta > 0 ? s.deltaUp : s.deltaDown}>
+                {st.delta > 0 ? `▲ +${Number(Math.abs(st.delta)).toLocaleString()}` : `▼ -${Number(Math.abs(st.delta)).toLocaleString()}`}
+              </span>
+            )}
           </div>
         ))}
       </div>
+
+      {/* Market reaction */}
+      {marketReactions.length > 0 && (
+        <div className={s.marketReaction}>
+          <span className={s.marketLabel}>시장 반응:</span>
+          {marketReactions.map(mr => (
+            <span key={mr.label} className={`${s.marketBadge} ${mr.isNeg ? s.marketBadgeNeg : s.marketBadgePos}`}>
+              {mr.label} {mr.pct}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

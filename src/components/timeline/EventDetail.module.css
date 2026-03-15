@@ -118,8 +118,13 @@
   border-top: 1px solid var(--border);
 }
 .ss { text-align: center; }
+.ssTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
 .ssVal {
-  display: block;
   font-family: var(--font-ui);
   font-size: 1.4rem;
   font-weight: 800;
@@ -135,6 +140,55 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-top: 0.2rem;
+}
+.deltaUp {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--accent, #c0392b);
+  margin-top: 0.1rem;
+}
+.deltaDown {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--blue, #2c6fbb);
+  margin-top: 0.1rem;
+}
+
+/* Market reaction */
+.marketReaction {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+.marketLabel {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.marketBadge {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.marketBadgePos {
+  background: rgba(39,174,96,0.08);
+  color: var(--green, #27ae60);
+}
+.marketBadgeNeg {
+  background: rgba(192,57,43,0.08);
+  color: var(--accent, #c0392b);
 }
 
 /* Animation */
