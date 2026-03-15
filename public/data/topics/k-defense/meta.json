@@ -1,0 +1,40 @@
+{
+  "slug": "k-defense",
+  "title": "대한민국 방산 부흥",
+  "status": "developing",
+  "startDate": "2026-02-28",
+  "baselineDate": "2026-02-27",
+  "phases": [
+    { "id": "war-rally", "title": "전쟁 랠리", "period": "2026년 2월 28일 — 3월 5일", "color": "#c0392b" },
+    { "id": "cheongung", "title": "천궁-II 실전 입증", "period": "2026년 3월 5일 — 3월 10일", "color": "#2c6fbb" },
+    { "id": "export-boom", "title": "수출 폭증", "period": "2026년 3월 10일 — 현재", "color": "#27864a" }
+  ],
+  "kpis": [
+    { "key": "hanwha", "label": "한화에어로", "unit": "₩", "source": "econ", "direction": "up-good" },
+    { "key": "lig", "label": "LIG넥스원", "unit": "₩", "source": "econ", "direction": "up-good" },
+    { "key": "backlog", "label": "수주잔고", "unit": "조원", "source": "stats", "direction": "up-good" }
+  ],
+  "statsFields": [
+    { "key": "backlog", "label": "수주잔고 (조원)", "color": "#27864a" },
+    { "key": "newContracts", "label": "신규 계약 (억$)", "color": "#2c6fbb" },
+    { "key": "interceptRate", "label": "요격 성공률 %", "color": "#c0392b" }
+  ],
+  "metricDefs": [
+    { "key": "hanwha", "label": "한화에어로", "unit": "₩", "format": "number", "direction": "up-good", "chartColor": "#c0392b", "chartLineWidth": 3, "showOnDashboard": true, "showOnDetail": true },
+    { "key": "lig", "label": "LIG넥스원", "unit": "₩", "format": "number", "direction": "up-good", "chartColor": "#2c6fbb", "chartLineWidth": 2.5, "showOnDashboard": true, "showOnDetail": true },
+    { "key": "kai", "label": "KAI", "unit": "₩", "format": "number", "direction": "up-good", "chartColor": "#27864a", "chartDash": [8, 4], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "hyundaiRotem", "label": "현대로템", "unit": "₩", "format": "number", "direction": "up-good", "chartColor": "#e67e22", "chartDash": [3, 3], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "ita", "label": "ITA (미 방산ETF)", "unit": "$", "format": "currency", "direction": "up-good", "chartColor": "#7048e8", "chartDash": [12, 4], "showOnDashboard": false, "showOnDetail": true }
+  ],
+  "collectors": [
+    { "key": "hanwha", "type": "yahoo", "symbol": "012450.KS", "transform": "round" },
+    { "key": "lig", "type": "yahoo", "symbol": "079550.KS", "transform": "round" },
+    { "key": "kai", "type": "yahoo", "symbol": "047810.KS", "transform": "round" },
+    { "key": "hyundaiRotem", "type": "yahoo", "symbol": "064350.KS", "transform": "round" },
+    { "key": "ita", "type": "yahoo", "symbol": "ITA", "transform": "round" }
+  ],
+  "newsSources": [
+    { "name": "연합뉴스", "type": "rss", "url": "https://www.yna.co.kr/RSS/defense.xml", "language": "ko" },
+    { "name": "한국경제", "type": "web", "url": "https://www.hankyung.com/", "language": "ko" }
+  ]
+}

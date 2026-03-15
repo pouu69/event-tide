@@ -1,0 +1,11 @@
+[
+  { "date": "2026-02-27", "oil": 73, "warInsurance": 0.5, "lng_eu": 36, "shipping_index": 100 },
+  { "date": "2026-03-01", "oil": 82, "warInsurance": 2.0, "lng_eu": 42, "shipping_index": 115 },
+  { "date": "2026-03-03", "oil": 83, "warInsurance": 3.5, "lng_eu": 55, "shipping_index": 140 },
+  { "date": "2026-03-05", "oil": 83, "warInsurance": 5.0, "lng_eu": 60, "shipping_index": 165 },
+  { "date": "2026-03-06", "oil": 83, "warInsurance": 5.5, "lng_eu": 61, "shipping_index": 175 },
+  { "date": "2026-03-09", "oil": 120, "warInsurance": 7.5, "lng_eu": 64, "shipping_index": 220 },
+  { "date": "2026-03-11", "oil": 95, "warInsurance": 7.0, "lng_eu": 62, "shipping_index": 200 },
+  { "date": "2026-03-13", "oil": 103, "warInsurance": 6.5, "lng_eu": 63, "shipping_index": 195 },
+  { "date": "2026-03-15", "oil": 100, "warInsurance": 6.0, "lng_eu": 62, "shipping_index": 190 }
+]

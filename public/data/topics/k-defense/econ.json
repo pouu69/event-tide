@@ -1,0 +1,11 @@
+[
+  { "date": "2026-02-27", "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 179 },
+  { "date": "2026-02-28", "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 185 },
+  { "date": "2026-03-03", "hanwha": 1369000, "lig": 661000, "kai": 95000, "hyundaiRotem": 78000, "ita": 195 },
+  { "date": "2026-03-04", "hanwha": 1432000, "lig": 680000, "kai": 93000, "hyundaiRotem": 75000, "ita": 200 },
+  { "date": "2026-03-05", "hanwha": 1500000, "lig": 720000, "kai": 91000, "hyundaiRotem": 70000, "ita": 210 },
+  { "date": "2026-03-06", "hanwha": 1480000, "lig": 710000, "kai": 90000, "hyundaiRotem": 68000, "ita": 215 },
+  { "date": "2026-03-10", "hanwha": 1520000, "lig": 750000, "kai": 92000, "hyundaiRotem": 65000, "ita": 218 },
+  { "date": "2026-03-12", "hanwha": 1550000, "lig": 780000, "kai": 91000, "hyundaiRotem": 64000, "ita": 225 },
+  { "date": "2026-03-15", "hanwha": 1580000, "lig": 800000, "kai": 90000, "hyundaiRotem": 63000, "ita": 229 }
+]

@@ -5,6 +5,18 @@
       "title": "미국 vs 이란 전쟁",
       "status": "ongoing",
       "updatedAt": "2026-03-15"
+    },
+    {
+      "slug": "hormuz-crisis",
+      "title": "호르무즈 해협 위기",
+      "status": "ongoing",
+      "updatedAt": "2026-03-15"
+    },
+    {
+      "slug": "k-defense",
+      "title": "대한민국 방산 부흥",
+      "status": "developing",
+      "updatedAt": "2026-03-15"
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "slug": "hormuz-crisis",
+  "title": "호르무즈 해협 위기",
+  "status": "ongoing",
+  "startDate": "2026-03-01",
+  "baselineDate": "2026-02-27",
+  "phases": [
+    { "id": "first-attacks", "title": "최초 공격", "period": "2026년 3월 1일 — 3월 4일", "color": "#e67e22" },
+    { "id": "blockade", "title": "해협 봉쇄", "period": "2026년 3월 5일 — 3월 8일", "color": "#c0392b" },
+    { "id": "mine-warfare", "title": "기뢰전", "period": "2026년 3월 9일 — 현재", "color": "#8e44ad" }
+  ],
+  "kpis": [
+    { "key": "oil", "label": "유가", "unit": "$", "source": "econ", "direction": "down-good" },
+    { "key": "shipsHit", "label": "피격 선박", "unit": "척", "source": "stats", "direction": "neutral" },
+    { "key": "dailyTransit", "label": "일일 통항", "unit": "척", "source": "stats", "direction": "up-good" }
+  ],
+  "statsFields": [
+    { "key": "shipsHit", "label": "피격 선박", "color": "#c0392b" },
+    { "key": "dailyTransit", "label": "일일 통항 선박", "color": "#2c6fbb" },
+    { "key": "strandedShips", "label": "고립 선박", "color": "#e67e22" },
+    { "key": "minesDetected", "label": "기뢰 탐지", "color": "#8e44ad" },
+    { "key": "casualties", "label": "선원 사상자", "color": "#c0392b" }
+  ],
+  "metricDefs": [
+    { "key": "oil", "label": "브렌트유 $", "unit": "$", "format": "currency", "direction": "down-good", "chartColor": "#e8590c", "chartLineWidth": 3, "showOnDashboard": true, "showOnDetail": true },
+    { "key": "warInsurance", "label": "전쟁보험료 %", "unit": "%", "format": "percent", "direction": "down-good", "chartColor": "#c0392b", "chartDash": [3, 3], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "lng_eu", "label": "유럽 LNG", "unit": "$", "format": "currency", "direction": "down-good", "chartColor": "#2c6fbb", "chartLineWidth": 2, "showOnDashboard": false, "showOnDetail": true },
+    { "key": "shipping_index", "label": "해운 운임지수", "unit": "pt", "format": "number", "direction": "neutral", "chartColor": "#27864a", "chartDash": [8, 4], "showOnDashboard": false, "showOnDetail": true }
+  ],
+  "collectors": [
+    { "key": "oil", "type": "yahoo", "symbol": "BZ=F", "transform": "round" },
+    { "key": "lng_eu", "type": "yahoo", "symbol": "TTF=F", "transform": "round" }
+  ],
+  "newsSources": [
+    { "name": "Al Jazeera", "type": "rss", "url": "https://www.aljazeera.com/xml/rss/all.xml", "language": "en" },
+    { "name": "CNBC", "type": "web", "url": "https://www.cnbc.com/world/", "language": "en" }
+  ]
+}

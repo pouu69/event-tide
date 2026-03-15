@@ -1,0 +1,253 @@
+[
+  {
+    "id": 1,
+    "date": "2026-03-01",
+    "phase": "first-attacks",
+    "tag": "military",
+    "title": "유조선 스카이라이트 호 피격 — 첫 호르무즈 해역 공격",
+    "desc": "카사브항 북부 해역에서 유조선 스카이라이트 호가 해상드론 공격을 받아 인도 선원 2명 사망, 3명 부상. 호르무즈 해협 위기의 첫 번째 공격.",
+    "details": [
+      "카사브항 북부 해역에서 해상드론에 의한 폭발 발생",
+      "인도 국적 선원 2명 사망, 3명 부상",
+      "선체 좌현에 대형 구멍, 기름 유출 시작",
+      "호르무즈 해역 첫 직접 공격으로 국제사회 충격"
+    ],
+    "sources": [
+      { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/3/1/tanker-attacked-strait-of-hormuz" },
+      { "name": "Reuters", "url": "https://www.reuters.com/world/middle-east/tanker-hit-hormuz-strait-2026-03-01/" }
+    ],
+    "metrics": {
+      "shipsHit": 1,
+      "dailyTransit": 130,
+      "strandedShips": 0,
+      "minesDetected": 0,
+      "casualties": 2
+    }
+  },
+  {
+    "id": 2,
+    "date": "2026-03-01",
+    "phase": "first-attacks",
+    "tag": "military",
+    "title": "유조선 소난골 나미베 호, 쿠웨이트 인근 대형 폭발",
+    "desc": "쿠웨이트 무바라크 알카비르 항 인근에서 유조선 소난골 나미베 호가 해상드론 공격으로 대형 폭발. 같은 날 두 번째 공격.",
+    "details": [
+      "쿠웨이트 무바라크 알카비르 항 인근 해역에서 공격 발생",
+      "해상드론 2기가 선체에 충돌, 대형 폭발",
+      "화재 진압에 수 시간 소요",
+      "같은 날 두 번째 유조선 공격으로 해운업계 비상"
+    ],
+    "sources": [
+      { "name": "CNBC", "url": "https://www.cnbc.com/2026/03/01/second-tanker-attacked-persian-gulf.html" },
+      { "name": "BBC", "url": "https://www.bbc.com/news/world-middle-east-2026-0301-tanker" }
+    ],
+    "metrics": {
+      "shipsHit": 2,
+      "dailyTransit": 120,
+      "strandedShips": 5,
+      "minesDetected": 0,
+      "casualties": 2
+    }
+  },
+  {
+    "id": 3,
+    "date": "2026-03-02",
+    "phase": "first-attacks",
+    "tag": "crisis",
+    "title": "IRGC, 호르무즈 해협 폐쇄 공식 선언",
+    "desc": "이란 혁명수비대(IRGC)가 호르무즈 해협 폐쇄를 공식 선언하고 통과하는 모든 선박에 대한 공격을 경고.",
+    "details": [
+      "IRGC 해군사령관, 국영TV를 통해 해협 폐쇄 선언",
+      "통과하는 모든 선박에 대한 무차별 공격 경고",
+      "국제 유가 즉시 급등, 브렌트유 $83 돌파",
+      "미 제5함대 경계태세 최고 수준으로 격상"
+    ],
+    "sources": [
+      { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/3/2/iran-irgc-declares-hormuz-strait-closed" },
+      { "name": "Reuters", "url": "https://www.reuters.com/world/middle-east/irgc-declares-hormuz-closure-2026-03-02/" }
+    ],
+    "metrics": {
+      "shipsHit": 2,
+      "dailyTransit": 80,
+      "strandedShips": 15,
+      "minesDetected": 0,
+      "casualties": 2
+    }
+  },
+  {
+    "id": 4,
+    "date": "2026-03-04",
+    "phase": "first-attacks",
+    "tag": "military",
+    "title": "유조선 프리마 호·루이스P 호 동시 피격",
+    "desc": "페르시아만에서 유조선 프리마 호가 이란 드론에 피격. 같은 날 미국 유조선 루이스P 호도 공격받아 피해.",
+    "details": [
+      "프리마 호, 페르시아만 중앙 해역에서 이란 자폭드론 피격",
+      "미국 국적 유조선 루이스P 호, 바레인 인근에서 드론 2기 공격",
+      "루이스P 호 선원 1명 부상, 선체 손상",
+      "미국 선박 직접 공격으로 미-이란 긴장 극도로 고조"
+    ],
+    "sources": [
+      { "name": "CNN", "url": "https://www.cnn.com/2026/03/04/middleeast/iran-drone-tanker-attack-persian-gulf" },
+      { "name": "Wall Street Journal", "url": "https://www.wsj.com/world/middle-east/us-tanker-attacked-persian-gulf-2026-03-04" }
+    ],
+    "metrics": {
+      "shipsHit": 4,
+      "dailyTransit": 60,
+      "strandedShips": 30,
+      "minesDetected": 0,
+      "casualties": 3
+    }
+  },
+  {
+    "id": 5,
+    "date": "2026-03-05",
+    "phase": "blockade",
+    "tag": "diplomacy",
+    "title": "IRGC, 선택적 봉쇄 발표 — 서방 선박만 차단",
+    "desc": "IRGC가 선택적 봉쇄를 발표. 미국·이스라엘·서방 동맹국 선박만 차단하고, 기타 국가 선박은 선택적으로 허용.",
+    "details": [
+      "미국·이스라엘·영국·프랑스 등 서방 동맹국 선박 전면 차단",
+      "중국·인도·터키 등 비서방 국가 선박 선별 통과 허용",
+      "이란, '적대국에 대한 정당한 자위권 행사'라고 주장",
+      "글로벌 해운사들 선박 경로 대폭 변경 시작"
+    ],
+    "sources": [
+      { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/3/5/iran-selective-blockade-hormuz-western-ships" },
+      { "name": "Financial Times", "url": "https://www.ft.com/content/hormuz-selective-blockade-2026-03-05" }
+    ],
+    "metrics": {
+      "shipsHit": 4,
+      "dailyTransit": 45,
+      "strandedShips": 50,
+      "minesDetected": 0,
+      "casualties": 3
+    }
+  },
+  {
+    "id": 6,
+    "date": "2026-03-06",
+    "phase": "blockade",
+    "tag": "military",
+    "title": "구조 예인선 세피드 프레스티지 호 미사일 피격 침몰",
+    "desc": "구조 작업 중이던 예인선 세피드 프레스티지 호가 미사일 2발에 피격되어 침몰. 선원 3명 실종.",
+    "details": [
+      "세피드 프레스티지 호, 좌초 선박 구조 작업 중 미사일 2발 피격",
+      "선체 급속 침몰, 선원 3명 실종",
+      "구조선까지 공격하는 이란의 무차별 공격에 국제사회 규탄",
+      "해상 구조 작업 사실상 중단 상태"
+    ],
+    "sources": [
+      { "name": "Reuters", "url": "https://www.reuters.com/world/middle-east/rescue-tug-sunk-hormuz-missiles-2026-03-06/" },
+      { "name": "Maritime Executive", "url": "https://www.maritime-executive.com/article/rescue-tug-sunk-hormuz-2026" }
+    ],
+    "metrics": {
+      "shipsHit": 5,
+      "dailyTransit": 35,
+      "strandedShips": 65,
+      "minesDetected": 0,
+      "casualties": 6
+    }
+  },
+  {
+    "id": 7,
+    "date": "2026-03-09",
+    "phase": "mine-warfare",
+    "tag": "military",
+    "title": "이란, 호르무즈 해협 기뢰 부설 시작",
+    "desc": "이란이 호르무즈 해협에 대규모 기뢰 부설을 시작. 미군 기뢰소해함 16척이 격파되었으며, 선박 통항이 사실상 중단.",
+    "details": [
+      "IRGC 해군, 해협 주요 항로에 기뢰 대규모 부설",
+      "미 해군 기뢰소해함 16척 격파, 소해 작전 차질",
+      "선박 통항 사실상 중단 — 하루 통항 10척 미만",
+      "국제 유가 $120 돌파, 사상 최대 일일 상승폭 기록"
+    ],
+    "sources": [
+      { "name": "CNBC", "url": "https://www.cnbc.com/2026/03/09/iran-mines-hormuz-strait-oil-surge.html" },
+      { "name": "BBC", "url": "https://www.bbc.com/news/world-middle-east-2026-0309-mines-hormuz" }
+    ],
+    "metrics": {
+      "shipsHit": 8,
+      "dailyTransit": 10,
+      "strandedShips": 100,
+      "minesDetected": 20,
+      "casualties": 8
+    }
+  },
+  {
+    "id": 8,
+    "date": "2026-03-11",
+    "phase": "mine-warfare",
+    "tag": "crisis",
+    "title": "대규모 선박 동시 공격 — 3척 이상 피격",
+    "desc": "아부다비 36해리 해상에서 벌크선 인근 폭발 등 3척 이상이 동시 피격. 해협 통항이 제로에 근접.",
+    "details": [
+      "아부다비 36해리 해상에서 벌크선 인근 대형 폭발",
+      "컨테이너선 1척, LNG 운반선 1척 추가 피격",
+      "해협 통항 사실상 제로 — 보험사 전쟁위험 보험 인수 거부",
+      "글로벌 공급망 대혼란, 아시아행 원유 수송 중단"
+    ],
+    "sources": [
+      { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/3/11/multiple-ships-attacked-hormuz-strait-transit-zero" },
+      { "name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-03-11/hormuz-transit-near-zero-ships-attacked" }
+    ],
+    "metrics": {
+      "shipsHit": 12,
+      "dailyTransit": 3,
+      "strandedShips": 140,
+      "minesDetected": 35,
+      "casualties": 10
+    }
+  },
+  {
+    "id": 9,
+    "date": "2026-03-13",
+    "phase": "mine-warfare",
+    "tag": "diplomacy",
+    "title": "터키·인도·사우디 선박 선별 통과 허용",
+    "desc": "이란이 터키 선박의 해협 통과를 허용하고, 인도 가스 운반선 2척과 사우디 유조선(원유 100만 배럴)의 인도행 통과도 허가.",
+    "details": [
+      "터키 국적 화물선 3척 해협 무사 통과",
+      "인도 가스 운반선 2척 통과 허용 — 인도-이란 외교 채널 가동",
+      "사우디 유조선 1척(원유 100만 배럴) 인도행으로 통과",
+      "이란, 비서방 국가와의 관계 유지 전략으로 분석"
+    ],
+    "sources": [
+      { "name": "Reuters", "url": "https://www.reuters.com/world/middle-east/iran-allows-turkey-india-ships-hormuz-2026-03-13/" },
+      { "name": "Financial Times", "url": "https://www.ft.com/content/hormuz-selective-passage-india-turkey-2026" }
+    ],
+    "metrics": {
+      "shipsHit": 13,
+      "dailyTransit": 8,
+      "strandedShips": 155,
+      "minesDetected": 42,
+      "casualties": 10
+    }
+  },
+  {
+    "id": 10,
+    "date": "2026-03-15",
+    "phase": "mine-warfare",
+    "tag": "crisis",
+    "title": "해협 봉쇄 지속 — 170척+ 고립, 글로벌 석유 운송 20% 차단",
+    "desc": "호르무즈 해협 봉쇄가 2주째 지속. 170척 이상의 선박이 고립되었으며, 글로벌 석유 해상 운송의 20%가 차단된 상태.",
+    "details": [
+      "해협 인근 170척 이상 선박 고립 — 선원 수천 명 체류",
+      "글로벌 석유 해상 운송의 약 20% 차단 상태",
+      "브렌트유 $100 전후 유지, 전쟁보험료 6% 수준",
+      "UN 안보리 긴급회의 소집, 해상 자유 통항 결의안 논의",
+      "미 해군 기뢰소해 작전 재개, 제한적 성과"
+    ],
+    "sources": [
+      { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/3/15/hormuz-blockade-170-ships-stranded-global-oil-disruption" },
+      { "name": "CNBC", "url": "https://www.cnbc.com/2026/03/15/hormuz-crisis-day-15-oil-supply-disruption.html" }
+    ],
+    "metrics": {
+      "shipsHit": 15,
+      "dailyTransit": 5,
+      "strandedShips": 170,
+      "minesDetected": 50,
+      "casualties": 12
+    }
+  }
+]
