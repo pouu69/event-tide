@@ -155,12 +155,86 @@
       "format": "number",
       "direction": "down-good",
       "chartColor": "#7048e8",
-      "chartDash": [
-        12,
-        4
-      ],
+      "chartDash": [12, 4],
       "showOnDashboard": false,
       "showOnDetail": true
+    },
+    {
+      "key": "vix",
+      "label": "VIX (공포지수)",
+      "unit": "pt",
+      "format": "number",
+      "direction": "down-good",
+      "chartColor": "#e03131",
+      "chartDash": [4, 2],
+      "showOnDashboard": false,
+      "showOnDetail": true
+    },
+    {
+      "key": "dxy",
+      "label": "달러 인덱스",
+      "unit": "pt",
+      "format": "number",
+      "direction": "neutral",
+      "chartColor": "#495057",
+      "chartDash": [6, 3],
+      "showOnDashboard": false,
+      "showOnDetail": false
+    },
+    {
+      "key": "us10y",
+      "label": "미국 10Y 국채",
+      "unit": "%",
+      "format": "percent",
+      "direction": "neutral",
+      "chartColor": "#0b7285",
+      "chartDash": [8, 4],
+      "showOnDashboard": false,
+      "showOnDetail": false
+    },
+    {
+      "key": "nikkei",
+      "label": "닛케이 225",
+      "unit": "pt",
+      "format": "number",
+      "direction": "up-good",
+      "chartColor": "#d6336c",
+      "chartDash": [3, 3],
+      "showOnDashboard": false,
+      "showOnDetail": false
+    },
+    {
+      "key": "xle",
+      "label": "에너지 ETF (XLE)",
+      "unit": "$",
+      "format": "currency",
+      "direction": "neutral",
+      "chartColor": "#c45500",
+      "chartLineWidth": 2,
+      "showOnDashboard": false,
+      "showOnDetail": false
+    },
+    {
+      "key": "wheat",
+      "label": "밀 선물",
+      "unit": "¢",
+      "format": "number",
+      "direction": "down-good",
+      "chartColor": "#ae8e00",
+      "chartDash": [5, 3],
+      "showOnDashboard": false,
+      "showOnDetail": false
+    },
+    {
+      "key": "copper",
+      "label": "구리",
+      "unit": "$",
+      "format": "currency",
+      "direction": "neutral",
+      "chartColor": "#d9480f",
+      "chartDash": [10, 4],
+      "showOnDashboard": false,
+      "showOnDetail": false
     }
   ],
   "collectors": [
@@ -217,6 +291,48 @@
       "type": "yahoo",
       "symbol": "ITA",
       "transform": "round"
+    },
+    {
+      "key": "vix",
+      "type": "yahoo",
+      "symbol": "^VIX",
+      "transform": "round2"
+    },
+    {
+      "key": "dxy",
+      "type": "yahoo",
+      "symbol": "DX-Y.NYB",
+      "transform": "round2"
+    },
+    {
+      "key": "us10y",
+      "type": "yahoo",
+      "symbol": "^TNX",
+      "transform": "round2"
+    },
+    {
+      "key": "nikkei",
+      "type": "yahoo",
+      "symbol": "^N225",
+      "transform": "round"
+    },
+    {
+      "key": "xle",
+      "type": "yahoo",
+      "symbol": "XLE",
+      "transform": "round2"
+    },
+    {
+      "key": "wheat",
+      "type": "yahoo",
+      "symbol": "ZW=F",
+      "transform": "round"
+    },
+    {
+      "key": "copper",
+      "type": "yahoo",
+      "symbol": "HG=F",
+      "transform": "round2"
     }
   ],
   "newsSources": [
