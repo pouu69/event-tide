@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 
-function Dashboard() { return <h1>Dashboard</h1>; }
 function TimelinePage() { return <h1>Timeline</h1>; }
 
 export default function App() {

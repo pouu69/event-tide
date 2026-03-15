@@ -1,0 +1,70 @@
+.card {
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #e0dcd6);
+  border-radius: var(--radius, 8px);
+  padding: 24px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text, #1a1814);
+  margin-bottom: 16px;
+}
+
+.kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 16px;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpiLabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: var(--text-muted, #918a82);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.kpiValue {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text, #1a1814);
+}
+
+.sparkline {
+  margin-top: 4px;
+}
+
+.loading {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted, #918a82);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #e0dcd6);
+  border-radius: var(--radius, 8px);
+}
