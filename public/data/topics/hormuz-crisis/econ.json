@@ -1,11 +1,56 @@
 [
-  { "date": "2026-02-27", "oil": 73, "warInsurance": 0.5, "lng_eu": 36, "shipping_index": 100 },
-  { "date": "2026-03-01", "oil": 82, "warInsurance": 2.0, "lng_eu": 42, "shipping_index": 115 },
-  { "date": "2026-03-03", "oil": 83, "warInsurance": 3.5, "lng_eu": 55, "shipping_index": 140 },
-  { "date": "2026-03-05", "oil": 83, "warInsurance": 5.0, "lng_eu": 60, "shipping_index": 165 },
-  { "date": "2026-03-06", "oil": 83, "warInsurance": 5.5, "lng_eu": 61, "shipping_index": 175 },
-  { "date": "2026-03-09", "oil": 120, "warInsurance": 7.5, "lng_eu": 64, "shipping_index": 220 },
-  { "date": "2026-03-11", "oil": 95, "warInsurance": 7.0, "lng_eu": 62, "shipping_index": 200 },
-  { "date": "2026-03-13", "oil": 103, "warInsurance": 6.5, "lng_eu": 63, "shipping_index": 195 },
-  { "date": "2026-03-15", "oil": 100, "warInsurance": 6.0, "lng_eu": 62, "shipping_index": 190 }
+  {
+    "date": "2026-02-27",
+    "oil": 73, "warInsurance": 0.5, "lng_eu": 36, "shipping_index": 100,
+    "vix": 15.2, "sp500": 6850, "kospi": 5800,
+    "defense": 100, "smh": 252, "botz": 35.2, "shipbuilding": 210000
+  },
+  {
+    "date": "2026-03-01",
+    "oil": 82, "warInsurance": 2, "lng_eu": 42, "shipping_index": 115,
+    "vix": 28.5, "sp500": 6780, "kospi": 5650,
+    "defense": 105, "smh": 238, "botz": 33.5, "shipbuilding": 218000
+  },
+  {
+    "date": "2026-03-03",
+    "oil": 83, "warInsurance": 3.5, "lng_eu": 55, "shipping_index": 140,
+    "vix": 34.7, "sp500": 6650, "kospi": 5400,
+    "defense": 110, "smh": 228, "botz": 32.2, "shipbuilding": 232000
+  },
+  {
+    "date": "2026-03-05",
+    "oil": 83, "warInsurance": 5, "lng_eu": 60, "shipping_index": 165,
+    "vix": 33.8, "sp500": 6420, "kospi": 5200,
+    "defense": 115, "smh": 225, "botz": 31.8, "shipbuilding": 245000
+  },
+  {
+    "date": "2026-03-06",
+    "oil": 83, "warInsurance": 5.5, "lng_eu": 61, "shipping_index": 175,
+    "vix": 35, "sp500": 6380, "kospi": 5150,
+    "defense": 116, "smh": 220, "botz": 31.2, "shipbuilding": 248000
+  },
+  {
+    "date": "2026-03-09",
+    "oil": 120, "warInsurance": 7.5, "lng_eu": 64, "shipping_index": 220,
+    "vix": 42.5, "sp500": 6350, "kospi": 4900,
+    "defense": 118, "smh": 208, "botz": 29.5, "shipbuilding": 262000
+  },
+  {
+    "date": "2026-03-11",
+    "oil": 95, "warInsurance": 7, "lng_eu": 62, "shipping_index": 200,
+    "vix": 28.3, "sp500": 6776, "kospi": 5533,
+    "defense": 116, "smh": 236, "botz": 33.0, "shipbuilding": 255000
+  },
+  {
+    "date": "2026-03-13",
+    "oil": 103, "warInsurance": 6.5, "lng_eu": 63, "shipping_index": 195,
+    "vix": 32.8, "sp500": 6530, "kospi": 5150,
+    "defense": 125, "smh": 224, "botz": 31.5, "shipbuilding": 265000
+  },
+  {
+    "date": "2026-03-15",
+    "oil": 99, "lng_eu": 51,
+    "vix": 27.19, "sp500": 6632, "kospi": 5487,
+    "defense": 229, "smh": 232, "botz": 32.5, "shipbuilding": 260000
+  }
 ]

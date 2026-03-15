@@ -1027,8 +1027,12 @@
       "이란: 미국 연계 석유 시설을 '잿더미'로 만들겠다 위협",
       "모지타바 하메네이: 호르무즈 해협 봉쇄를 '적을 압박하는 도구'로 유지 주장",
       "이스라엘, 레바논 대규모 지상침공 계획 보도",
-      "개전 이후 미국 5,000+ 목표 타격, 군함 60+ 파괴",
-      "이란 보건부: 1,444명 사망, 18,551명 부상",
+      "이스파한 공장 미-이스라엘 공습 — 15명 사망 (이란 매체)",
+      "바레인·사우디 F1 그랑프리 취소 확정 — 전쟁 영향으로 걸프 경기 불가",
+      "마드리드 수천 명 반전 시위 — '잊혀진 가자, 이란 전쟁 확산 경고'",
+      "서울에서도 수백 명 미-이스라엘 공습 반대 시위",
+      "터키, 이란 분쟁 확대에 최고 경계 태세 — 도발 자제 경고",
+      "UNESCO, 미나브 여학교 공습 규탄 — '두 차례 공격…어떻게'",
       "휴전 발효되거나 임박하지 않은 상태"
     ],
     "sources": [
@@ -1045,12 +1049,20 @@
         "url": "https://www.cnn.com/2026/03/13/middleeast/us-israel-iran-middle-east-war-what-we-know-intl-hnk"
       },
       {
-        "name": "CFR — 분쟁 트래커",
-        "url": "https://www.cfr.org/global-conflict-tracker/conflict/confrontation-between-united-states-and-iran"
+        "name": "Al Jazeera — 이스파한 공장 15명 사망",
+        "url": "https://www.aljazeera.com/news/2026/3/14/us-israeli-strike-kills-15-at-isfahan-factory-iranian-media-says"
       },
       {
-        "name": "Chatham House — 경제 영향",
-        "url": "https://www.chathamhouse.org/2026/03/how-will-iran-war-affect-global-economy"
+        "name": "Al Jazeera — F1 취소",
+        "url": "https://www.aljazeera.com/sports/2026/3/14/bahrain-and-saudi-f1-races-cancelations-confirmed-due-to-iran-war"
+      },
+      {
+        "name": "Al Jazeera — 서울 시위",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/14/hundreds-protest-against-us-israeli-strikes-on-iran-in-seoul"
+      },
+      {
+        "name": "Al Jazeera — UNESCO 규탄",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/14/unesco-condemns-strike-on-minab-girls-school-they-attacked-twice-how"
       },
       {
         "name": "CNN — 레바논 지상침공",
@@ -1078,9 +1090,15 @@
       "UAE 푸자이라 벙커링 허브에 드론 잔해 낙하 → 화재 발생",
       "카타르, 탄도미사일 4발 + 드론 다수 요격 성공",
       "쿠웨이트 아흐마드 알자베르 공군기지, 드론 2발 피격 — 군인 3명 부상",
+      "FPV 드론, 이라크 소재 미군 기지 직접 타격",
+      "미-이스라엘, 이스파한 대규모 연속 공습 — 이란 우주연구센터 심각한 피해",
+      "이란 영향력 있는 방위 수장 장례 행렬 진행",
+      "전 CIA 국장, 이스라엘 공격 계획 사전 인지 폭로",
+      "트럼프 '협상 준비 안 됐다' — 이스파한 폭격 계속",
+      "텔아비브 주거 지역 파편 피해 — 차량 전소·전복",
+      "텔아비브에서 반전 시위 — 이스라엘의 이란 공격 비판",
       "레바논: 개전 이후 826명 사망(어린이 106명), 2,000명+ 부상, 병원 5곳 폐쇄",
-      "KC-135 공중급유기 이라크 서부 추락 — 미 공군 6명 전원 사망 (3/12 확인)",
-      "트럼프: '호르무즈 해협 통해 석유 받는 나라들이 항로 방어에 참여해야'"
+      "KC-135 공중급유기 이라크 서부 추락 — 미 공군 6명 전원 사망 (3/12 확인)"
     ],
     "sources": [
       {
@@ -1102,6 +1120,26 @@
       {
         "name": "CSIS — 이란 드론전 분석",
         "url": "https://www.csis.org/analysis/unpacking-irans-drone-campaign-gulf-early-lessons-future-drone-warfare"
+      },
+      {
+        "name": "Al Jazeera — 이라크 미군기지 드론",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/15/fpv-drone-slams-into-us-military-base-in-iraq"
+      },
+      {
+        "name": "Al Jazeera — 이스파한 폭격",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/15/barrage-of-us-israeli-strikes-target-isfahan"
+      },
+      {
+        "name": "Al Jazeera — 트럼프 협상 거부",
+        "url": "https://www.aljazeera.com/news/liveblog/2026/3/15/iran-war-live-trump-urges-world-to-keep-hormuz-strait-open"
+      },
+      {
+        "name": "Al Jazeera — CIA 사전 인지",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/15/former-cia-chief-reveals-early-knowledge-of-israeli-attack-plans"
+      },
+      {
+        "name": "Al Jazeera — 우주연구센터 피해",
+        "url": "https://www.aljazeera.com/video/newsfeed/2026/3/15/irans-space-research-centre-severely-damaged-in-strikes"
       }
     ],
     "metrics": {

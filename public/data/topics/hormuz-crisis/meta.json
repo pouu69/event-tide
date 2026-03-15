@@ -25,11 +25,25 @@
     { "key": "oil", "label": "브렌트유 $", "unit": "$", "format": "currency", "direction": "down-good", "chartColor": "#e8590c", "chartLineWidth": 3, "showOnDashboard": true, "showOnDetail": true },
     { "key": "warInsurance", "label": "전쟁보험료 %", "unit": "%", "format": "percent", "direction": "down-good", "chartColor": "#c0392b", "chartDash": [3, 3], "showOnDashboard": false, "showOnDetail": true },
     { "key": "lng_eu", "label": "유럽 LNG", "unit": "$", "format": "currency", "direction": "down-good", "chartColor": "#2c6fbb", "chartLineWidth": 2, "showOnDashboard": false, "showOnDetail": true },
-    { "key": "shipping_index", "label": "해운 운임지수", "unit": "pt", "format": "number", "direction": "neutral", "chartColor": "#27864a", "chartDash": [8, 4], "showOnDashboard": false, "showOnDetail": true }
+    { "key": "shipping_index", "label": "해운 운임지수", "unit": "pt", "format": "number", "direction": "neutral", "chartColor": "#27864a", "chartDash": [8, 4], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "vix", "label": "VIX (공포지수)", "unit": "pt", "format": "number", "direction": "down-good", "chartColor": "#9b59b6", "chartDash": [4, 3], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "sp500", "label": "S&P 500", "unit": "pt", "format": "number", "direction": "up-good", "chartColor": "#3498db", "chartDash": [8, 4], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "kospi", "label": "KOSPI", "unit": "pt", "format": "number", "direction": "up-good", "chartColor": "#e74c3c", "chartDash": [6, 3], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "defense", "label": "방산 ETF (ITA)", "unit": "$", "format": "currency", "direction": "up-good", "chartColor": "#c0392b", "chartLineWidth": 2.5, "showOnDashboard": false, "showOnDetail": true },
+    { "key": "smh", "label": "반도체 ETF (SMH)", "unit": "$", "format": "currency", "direction": "up-good", "chartColor": "#5c7cfa", "showOnDashboard": false, "showOnDetail": true },
+    { "key": "botz", "label": "AI·로봇 ETF (BOTZ)", "unit": "$", "format": "currency", "direction": "up-good", "chartColor": "#9775fa", "chartDash": [6, 3], "showOnDashboard": false, "showOnDetail": true },
+    { "key": "shipbuilding", "label": "HD한국조선해양", "unit": "₩", "format": "number", "direction": "up-good", "chartColor": "#0ca678", "showOnDashboard": false, "showOnDetail": true }
   ],
   "collectors": [
     { "key": "oil", "type": "yahoo", "symbol": "BZ=F", "transform": "round" },
-    { "key": "lng_eu", "type": "yahoo", "symbol": "TTF=F", "transform": "round" }
+    { "key": "lng_eu", "type": "yahoo", "symbol": "TTF=F", "transform": "round" },
+    { "key": "vix", "type": "yahoo", "symbol": "^VIX", "transform": "round2" },
+    { "key": "sp500", "type": "yahoo", "symbol": "^GSPC", "transform": "round" },
+    { "key": "kospi", "type": "yahoo", "symbol": "^KS11", "transform": "round" },
+    { "key": "defense", "type": "yahoo", "symbol": "ITA", "transform": "round" },
+    { "key": "smh", "type": "yahoo", "symbol": "SMH", "transform": "round2" },
+    { "key": "botz", "type": "yahoo", "symbol": "BOTZ", "transform": "round2" },
+    { "key": "shipbuilding", "type": "yahoo", "symbol": "009540.KS", "transform": "round" }
   ],
   "newsSources": [
     { "name": "Al Jazeera", "type": "rss", "url": "https://www.aljazeera.com/xml/rss/all.xml", "language": "en" },

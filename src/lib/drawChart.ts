@@ -1,4 +1,4 @@
-import type { EconDataPoint } from '../types';
+import type { EconDataPoint, ChartAnnotation } from '../types';
 
 export interface ChartDataset {
   key: string;
@@ -6,6 +6,12 @@ export interface ChartDataset {
   color: string;
   dash?: number[];
   lineWidth?: number;
+}
+
+export interface SignalMarker {
+  dataIndex: number;
+  type: 'buy' | 'sell';
+  label: string;
 }
 
 export function drawChart(
@@ -16,6 +22,8 @@ export function drawChart(
   hoverIndex?: number,
   warStartDate?: string,
   eventMarkers?: { date: string; label: string }[],
+  annotations?: ChartAnnotation[],
+  signalMarkers?: SignalMarker[],
 ): void {
   const W = canvas.width;
   const H = canvas.height;
@@ -199,6 +207,75 @@ export function drawChart(
       ctx.stroke();
     });
   });
+
+  // Annotations — biggest move marker
+  if (annotations && annotations.length > 0) {
+    annotations.forEach(ann => {
+      if (ann.dataIndex < 0 || ann.dataIndex >= n) return;
+      const ax = toX(ann.dataIndex);
+      // Small triangle marker at top
+      ctx.save();
+      ctx.fillStyle = ann.color;
+      ctx.beginPath();
+      ctx.moveTo(ax, pad.top - 2);
+      ctx.lineTo(ax - 4, pad.top - 10);
+      ctx.lineTo(ax + 4, pad.top - 10);
+      ctx.closePath();
+      ctx.fill();
+      // Label
+      ctx.font = '600 8px DM Sans, sans-serif';
+      ctx.textAlign = 'center';
+      const labelText = ann.text.length > 20 ? ann.text.slice(0, 20) + '..' : ann.text;
+      ctx.fillText(labelText, ax, pad.top - 13);
+      ctx.restore();
+    });
+  }
+
+  // Signal markers (buy/sell triangles)
+  if (signalMarkers && signalMarkers.length > 0) {
+    signalMarkers.forEach(sm => {
+      if (sm.dataIndex < 0 || sm.dataIndex >= n) return;
+      const sx = toX(sm.dataIndex);
+      const isBuy = sm.type === 'buy';
+      const color = isBuy ? '#c0392b' : '#27ae60';
+
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.85;
+
+      if (isBuy) {
+        // Upward triangle at bottom
+        const by = pad.top + chartH + 2;
+        ctx.beginPath();
+        ctx.moveTo(sx, by - 10);
+        ctx.lineTo(sx - 6, by);
+        ctx.lineTo(sx + 6, by);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        // Downward triangle at top
+        const ty = pad.top - 2;
+        ctx.beginPath();
+        ctx.moveTo(sx, ty + 10);
+        ctx.lineTo(sx - 6, ty);
+        ctx.lineTo(sx + 6, ty);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Label
+      ctx.globalAlpha = 1;
+      ctx.font = 'bold 7px DM Sans, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = color;
+      if (isBuy) {
+        ctx.fillText(sm.label, sx, pad.top + chartH + 14);
+      } else {
+        ctx.fillText(sm.label, sx, pad.top - 14);
+      }
+      ctx.restore();
+    });
+  }
 
   // X labels
   ctx.fillStyle = '#918a82';

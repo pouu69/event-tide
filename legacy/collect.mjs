@@ -42,7 +42,7 @@ const targetDate = dateArg || new Date().toISOString().slice(0, 10);
 // === FETCH HELPERS ===
 async function fetchJSON(url) {
   const res = await fetch(url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (war-history-collector)' }
+    headers: { 'User-Agent': 'Mozilla/5.0 (eventide-collector)' }
   });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${url}`);
   return res.json();

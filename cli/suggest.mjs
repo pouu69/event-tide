@@ -87,7 +87,7 @@ export async function suggest(slug, topicDir) {
 
     try {
       const res = await globalThis.fetch(source.url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (war-history-collector)' },
+        headers: { 'User-Agent': 'Mozilla/5.0 (eventide-collector)' },
         signal: AbortSignal.timeout(10000),
       });
 

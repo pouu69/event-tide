@@ -1,0 +1,549 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Header + Tabs */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.header h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+}
+.tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tab {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-right: 1px solid var(--border);
+}
+.tab:last-child { border-right: none; }
+.tab:hover { color: var(--text); background: var(--bg-warm); }
+.tabActive {
+  color: var(--text);
+  background: var(--bg-warm);
+  font-weight: 700;
+}
+
+/* Tab content */
+.tabContent {
+  min-height: 200px;
+}
+.empty {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ─── Paired Mini Charts ─── */
+.pairsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.8rem;
+}
+.pairCard {
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+}
+.pairHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  gap: 0.4rem;
+}
+.pairLabels {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.pairDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pairName {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.pairX {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  margin: 0 0.1rem;
+}
+.pairR {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.pairRStrong { background: rgba(192,57,43,0.1); color: var(--accent); }
+.pairRMid { background: rgba(230,126,34,0.1); color: #e67e22; }
+.pairRWeak { background: rgba(0,0,0,0.04); color: var(--text-muted); }
+
+.pairChartWrap {
+  margin-bottom: 0.3rem;
+}
+.pairChartWrap canvas {
+  display: block;
+  width: 100%;
+}
+.pairDesc {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── Cluster View ─── */
+.clustersWrap {
+  display: grid;
+  gap: 0.8rem;
+}
+.cluster {
+  border-left: 4px solid;
+  padding: 0.7rem 1rem;
+  background: var(--bg-warm);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.clusterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.clusterName {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.clusterDir {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.clusterMetrics {
+  display: grid;
+  gap: 0.35rem;
+}
+.clusterMetric {
+  display: grid;
+  grid-template-columns: 10px 1fr auto 80px;
+  gap: 0.4rem;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+}
+.cmDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.cmLabel {
+  font-weight: 600;
+  color: var(--text);
+}
+.cmPct {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.cmUp { color: var(--green, #27ae60); }
+.cmDown { color: var(--accent, #c0392b); }
+
+.cmBarWrap {
+  height: 5px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.cmBar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.clusterInsight {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+.clusterInsight strong {
+  color: var(--text);
+}
+
+/* ─── Event Impact ─── */
+.impactSub {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+.impactSub strong {
+  color: var(--text);
+}
+
+.impactGrid {
+  display: grid;
+  gap: 0;
+}
+.impactRow {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 0.7fr 1.2fr;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.impactRow:last-child { border-bottom: none; }
+.impactHeader {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.35rem;
+}
+.impactLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.impactDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.impactVal {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.impactPct {
+  font-weight: 800;
+}
+.impactPos .impactPct { color: var(--green, #27ae60); }
+.impactNeg .impactPct { color: var(--accent, #c0392b); }
+
+.impactBarWrap {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.impactBar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.impactSummary {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+.impactSummary strong {
+  color: var(--text);
+}
+
+/* ─── Causal Timeline ─── */
+.causalWrap {
+  margin-bottom: 0.5rem;
+}
+.causalWrap canvas {
+  width: 100%;
+  display: block;
+}
+
+.causalLegend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+.causalLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+.causalLegendBar {
+  width: 14px;
+  height: 10px;
+  background: rgba(192,57,43,0.2);
+  border: 1px solid rgba(192,57,43,0.4);
+  border-radius: 2px;
+}
+.causalLegendLine {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.escalation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+  align-items: center;
+}
+.escalationTitle {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 100%;
+}
+.escalationNote {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── News Impact ─── */
+.subSections {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.subBtn {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.subBtn:hover { color: var(--text); border-color: var(--text-muted); }
+.subBtnActive {
+  color: var(--text);
+  background: var(--bg-warm);
+  border-color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* Tag section */
+.tagSection { display: grid; gap: 0.6rem; }
+.tagCard {
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+.tagCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.tagName {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.tagCount {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+.tagMetrics { display: grid; gap: 0.2rem; }
+.tagMetric {
+  display: grid;
+  grid-template-columns: 8px 1fr auto;
+  gap: 0.4rem;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+}
+.tagMetricDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.tagMetricLabel { color: var(--text-secondary); }
+.tagMetricPct {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Keyword section */
+.kwSection { display: grid; gap: 0.6rem; }
+.kwCard {
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+}
+.kwHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.kwWord {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.kwCount {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.kwBars { display: grid; gap: 0.25rem; }
+.kwBar {
+  display: grid;
+  grid-template-columns: 70px 1fr 55px;
+  gap: 0.4rem;
+  align-items: center;
+}
+.kwBarLabel {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: right;
+}
+.kwBarTrack {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.kwBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.kwBarPct {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scatter */
+.scatterSection {}
+.scatterLegend {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+.scatterDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.trendLine {
+  display: inline-block;
+  width: 16px;
+  height: 0;
+  border-top: 2px dashed rgba(192,57,43,0.4);
+}
+
+/* Shared insight */
+.newsInsight {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+.newsInsight strong {
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .pairsGrid { grid-template-columns: 1fr; }
+  .impactRow {
+    grid-template-columns: 1fr 0.8fr 0.8fr 0.6fr 1fr;
+    font-size: 0.65rem;
+  }
+  .tabs { flex-wrap: wrap; }
+  .clusterMetric {
+    grid-template-columns: 10px 1fr auto 60px;
+    font-size: 0.65rem;
+  }
+}

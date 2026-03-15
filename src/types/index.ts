@@ -29,3 +29,32 @@ export interface TopicEvent {
   metrics: Record<string, number>;
 }
 export interface EconDataPoint { date: string; [key: string]: number | string; }
+
+// Data Storytelling types
+export interface InsightData {
+  headline: string;
+  impactScore: number; // 1-10
+  top3: { label: string; value: string; context: string }[];
+  phaseProgress: number; // 0-1
+  phaseColor: string;
+  phaseTitle: string;
+}
+
+export interface StatWithContext {
+  key: string;
+  label: string;
+  color: string;
+  value: string;
+  delta: number | null;
+  trendData: number[];
+  context: string | null;      // e.g. "일평균 362명"
+  pctFromBaseline: string | null; // e.g. "개전 대비 +37%"
+  severity: number;            // 0-1 severity for background tinting
+  isHighlight: boolean;        // largest change → accent border
+}
+
+export interface ChartAnnotation {
+  dataIndex: number;
+  text: string;
+  color: string;
+}

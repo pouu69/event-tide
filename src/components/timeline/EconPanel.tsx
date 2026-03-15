@@ -1,8 +1,9 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import type { TopicMeta, TopicEvent, EconDataPoint } from '../../types';
 import { pctChange, getNearestEconData } from '../../lib/utils';
+import { computeVolatileMetrics, findBiggestMove } from '../../lib/storytelling';
 import { drawChart } from '../../lib/drawChart';
-import type { ChartDataset } from '../../lib/drawChart';
+import type { ChartDataset, SignalMarker } from '../../lib/drawChart';
 import s from './EconPanel.module.css';
 
 interface Props {
@@ -29,24 +30,61 @@ export default function EconPanel({ meta, econ, currentDate, events }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  // Build datasets from metricDefs that are showOnDetail
-  const datasets: ChartDataset[] = meta.metricDefs
-    .filter(m => m.showOnDetail)
-    .map(m => ({
-      key: m.key,
-      label: m.label,
-      color: m.chartColor,
-      dash: m.chartDash,
-      lineWidth: m.chartLineWidth,
-    }));
+  const [showAll, setShowAll] = useState(false);
 
   const chartData = getEconDataUpTo(currentDate, econ);
+
+  // Sort metrics by volatility
+  const detailMetrics = meta.metricDefs.filter(m => m.showOnDetail);
+  const sortedMetrics = computeVolatileMetrics(detailMetrics, chartData);
+
+  // Show top 3 by default, all on toggle
+  const visibleMetrics = showAll ? sortedMetrics : sortedMetrics.slice(0, 3);
+
+  const datasets: ChartDataset[] = visibleMetrics.map(m => ({
+    key: m.key,
+    label: m.label,
+    color: m.chartColor,
+    dash: m.chartDash,
+    lineWidth: m.chartLineWidth,
+  }));
 
   // Build event markers from significant events
   const eventMarkers = (events || [])
     .filter(e => e.tag === 'military' || e.tag === 'crisis')
     .slice(0, 5)
     .map(e => ({ date: e.date, label: e.title }));
+
+  // Compute biggest move annotation
+  const biggestMove = findBiggestMove(chartData, datasets);
+  const annotations = biggestMove ? [{
+    dataIndex: biggestMove.dataIndex,
+    text: biggestMove.text,
+    color: biggestMove.color,
+  }] : [];
+
+  // VIX signal markers on chart
+  const signalMarkers: SignalMarker[] = [];
+  const hasVix = chartData.some(d => d.vix !== undefined);
+  if (hasVix) {
+    chartData.forEach((d, i) => {
+      const vix = Number(d.vix);
+      if (isNaN(vix)) return;
+      const prevVix = i > 0 ? Number(chartData[i - 1].vix) : undefined;
+      // Strong buy: VIX >= 40 or (VIX >= 35 and dropping)
+      if (vix >= 40 || (vix >= 35 && prevVix !== undefined && vix < prevVix)) {
+        signalMarkers.push({ dataIndex: i, type: 'buy', label: '매수' });
+      }
+      // Buy: VIX 30-35
+      else if (vix >= 30) {
+        signalMarkers.push({ dataIndex: i, type: 'buy', label: '매수' });
+      }
+      // Sell: VIX < 15
+      else if (vix < 15) {
+        signalMarkers.push({ dataIndex: i, type: 'sell', label: '매도' });
+      }
+    });
+  }
 
   // Draw chart
   const renderChart = useCallback((hover?: number) => {
@@ -62,9 +100,10 @@ export default function EconPanel({ meta, econ, currentDate, events }: Props) {
       canvas.height = 300;
     }
 
-    drawChart(ctx, canvas, datasets, chartData, hover, meta.startDate, eventMarkers);
+    drawChart(ctx, canvas, datasets, chartData, hover, meta.startDate, eventMarkers, annotations, signalMarkers);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [datasets, chartData, meta.startDate, JSON.stringify(eventMarkers)]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [datasets, chartData, meta.startDate, JSON.stringify(eventMarkers), JSON.stringify(annotations), JSON.stringify(signalMarkers)]);
 
   useEffect(() => {
     renderChart();
@@ -136,6 +175,7 @@ export default function EconPanel({ meta, econ, currentDate, events }: Props) {
   const current = getNearestEconData(currentDate, econ);
   const day = warDay(currentDate, meta.startDate);
   const asofText = day !== null ? `\u2014 DAY ${day} \uAE30\uC900` : '\u2014 \uC804\uC7C1 \uC804';
+  const hiddenCount = sortedMetrics.length - 3;
 
   return (
     <div className={s.card}>
@@ -144,6 +184,11 @@ export default function EconPanel({ meta, econ, currentDate, events }: Props) {
           <h3>{'\uACBD\uC81C \uC9C0\uD45C'}</h3>
           <span className={s.asof}>{asofText}</span>
         </div>
+        {hiddenCount > 0 && (
+          <button className={s.toggleBtn} onClick={() => setShowAll(v => !v)}>
+            {showAll ? '주요 지표만' : `전체 보기 (+${hiddenCount})`}
+          </button>
+        )}
       </div>
 
       <div className={s.chartWrap} ref={wrapRef}>

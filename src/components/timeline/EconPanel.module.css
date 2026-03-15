@@ -24,6 +24,23 @@
   color: var(--accent);
 }
 
+.toggleBtn {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.toggleBtn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
 .chartWrap {
   position: relative;
   margin-bottom: 1rem;

@@ -1,15 +1,106 @@
 [
-  { "date": "2026-02-27", "oil": 73, "sp500": 6850, "kospi": 5800, "usdkrw": 1454, "gold": 5296, "bitcoin": 66500, "gas": 2.94, "lng_eu": 36, "defense": 100, "vix": 15.2, "dxy": 104.5, "us10y": 4.32, "nikkei": 55800, "xle": 52.1, "wheat": 565, "copper": 4.85 },
-  { "date": "2026-02-28", "oil": 82, "sp500": 6780, "kospi": 5650, "usdkrw": 1472, "gold": 5423, "bitcoin": 67200, "gas": 3.05, "lng_eu": 42, "defense": 105, "vix": 28.5, "dxy": 103.8, "us10y": 4.18, "nikkei": 54200, "xle": 55.3, "wheat": 590, "copper": 4.72 },
-  { "date": "2026-03-02", "oil": 82, "sp500": 6700, "kospi": 5500, "usdkrw": 1480, "gold": 5350, "bitcoin": 68000, "gas": 3.15, "lng_eu": 48, "defense": 108, "vix": 32.1, "dxy": 103.2, "us10y": 4.10, "nikkei": 53500, "xle": 56.8, "wheat": 605, "copper": 4.65 },
-  { "date": "2026-03-03", "oil": 83, "sp500": 6650, "kospi": 5400, "usdkrw": 1488, "gold": 5085, "bitcoin": 68500, "gas": 3.20, "lng_eu": 55, "defense": 110, "vix": 34.7, "dxy": 102.8, "us10y": 4.05, "nikkei": 53100, "xle": 57.2, "wheat": 612, "copper": 4.58 },
-  { "date": "2026-03-04", "oil": 88, "sp500": 6500, "kospi": 5094, "usdkrw": 1507, "gold": 5150, "bitcoin": 69000, "gas": 3.28, "lng_eu": 58, "defense": 112, "vix": 36.2, "dxy": 102.1, "us10y": 3.98, "nikkei": 52400, "xle": 58.5, "wheat": 625, "copper": 4.50 },
-  { "date": "2026-03-05", "oil": 83, "sp500": 6420, "kospi": 5200, "usdkrw": 1498, "gold": 5180, "bitcoin": 69500, "gas": 3.32, "lng_eu": 60, "defense": 115, "vix": 33.8, "dxy": 101.5, "us10y": 3.95, "nikkei": 52100, "xle": 57.0, "wheat": 618, "copper": 4.55 },
-  { "date": "2026-03-06", "oil": 83, "sp500": 6380, "kospi": 5150, "usdkrw": 1502, "gold": 5200, "bitcoin": 69800, "gas": 3.35, "lng_eu": 61, "defense": 116, "vix": 35.0, "dxy": 101.2, "us10y": 3.92, "nikkei": 51800, "xle": 56.5, "wheat": 620, "copper": 4.52 },
-  { "date": "2026-03-09", "oil": 120, "sp500": 6350, "kospi": 4900, "usdkrw": 1510, "gold": 5220, "bitcoin": 70500, "gas": 3.45, "lng_eu": 64, "defense": 118, "vix": 42.5, "dxy": 100.1, "us10y": 3.80, "nikkei": 50200, "xle": 62.3, "wheat": 645, "copper": 4.40 },
-  { "date": "2026-03-10", "oil": 90, "sp500": 6776, "kospi": 5533, "usdkrw": 1495, "gold": 5200, "bitcoin": 71000, "gas": 3.50, "lng_eu": 60, "defense": 116, "vix": 28.3, "dxy": 101.0, "us10y": 4.05, "nikkei": 52700, "xle": 58.0, "wheat": 620, "copper": 4.60 },
-  { "date": "2026-03-12", "oil": 95, "sp500": 6632, "kospi": 5300, "usdkrw": 1498, "gold": 5240, "bitcoin": 70800, "gas": 3.55, "lng_eu": 62, "defense": 120, "vix": 30.5, "dxy": 100.8, "us10y": 3.95, "nikkei": 52200, "xle": 58.5, "wheat": 625, "copper": 4.55 },
-  { "date": "2026-03-13", "oil": 103, "sp500": 6530, "kospi": 5150, "usdkrw": 1501, "gold": 5250, "bitcoin": 71200, "gas": 3.58, "lng_eu": 63, "defense": 125, "vix": 32.8, "dxy": 100.5, "us10y": 3.90, "nikkei": 51500, "xle": 59.8, "wheat": 630, "copper": 4.48 },
-  { "date": "2026-03-14", "oil": 105, "sp500": 6500, "kospi": 5100, "usdkrw": 1505, "gold": 5260, "bitcoin": 71500, "gas": 3.60, "lng_eu": 64, "defense": 128, "vix": 33.5, "dxy": 100.3, "us10y": 3.88, "nikkei": 51200, "xle": 60.2, "wheat": 635, "copper": 4.45 },
-  { "date": "2026-03-15", "oil": 100, "sp500": 6632, "kospi": 5487, "usdkrw": 1483, "gold": 5186, "bitcoin": 72395, "gas": 3.58, "lng_eu": 62, "defense": 126, "vix": 27.2, "dxy": 100.5, "us10y": 4.29, "nikkei": 53820, "xle": 57.7, "wheat": 614, "copper": 5.76 }
+  {
+    "date": "2026-02-27",
+    "oil": 73, "sp500": 6850, "kospi": 5800, "usdkrw": 1454,
+    "gold": 5296, "bitcoin": 66500, "gas": 2.94, "lng_eu": 36,
+    "defense": 100, "vix": 15.2, "dxy": 104.5, "us10y": 4.32,
+    "nikkei": 55800, "xle": 52.1, "wheat": 565, "copper": 4.85,
+    "smh": 252, "botz": 35.2, "shipbuilding": 210000
+  },
+  {
+    "date": "2026-02-28",
+    "oil": 82, "sp500": 6780, "kospi": 5650, "usdkrw": 1472,
+    "gold": 5423, "bitcoin": 67200, "gas": 3.05, "lng_eu": 42,
+    "defense": 105, "vix": 28.5, "dxy": 103.8, "us10y": 4.18,
+    "nikkei": 54200, "xle": 55.3, "wheat": 590, "copper": 4.72,
+    "smh": 238, "botz": 33.5, "shipbuilding": 218000
+  },
+  {
+    "date": "2026-03-02",
+    "oil": 82, "sp500": 6700, "kospi": 5500, "usdkrw": 1480,
+    "gold": 5350, "bitcoin": 68000, "gas": 3.15, "lng_eu": 48,
+    "defense": 108, "vix": 32.1, "dxy": 103.2, "us10y": 4.1,
+    "nikkei": 53500, "xle": 56.8, "wheat": 605, "copper": 4.65,
+    "smh": 232, "botz": 32.8, "shipbuilding": 225000
+  },
+  {
+    "date": "2026-03-03",
+    "oil": 83, "sp500": 6650, "kospi": 5400, "usdkrw": 1488,
+    "gold": 5085, "bitcoin": 68500, "gas": 3.2, "lng_eu": 55,
+    "defense": 110, "vix": 34.7, "dxy": 102.8, "us10y": 4.05,
+    "nikkei": 53100, "xle": 57.2, "wheat": 612, "copper": 4.58,
+    "smh": 228, "botz": 32.2, "shipbuilding": 232000
+  },
+  {
+    "date": "2026-03-04",
+    "oil": 88, "sp500": 6500, "kospi": 5094, "usdkrw": 1507,
+    "gold": 5150, "bitcoin": 69000, "gas": 3.28, "lng_eu": 58,
+    "defense": 112, "vix": 36.2, "dxy": 102.1, "us10y": 3.98,
+    "nikkei": 52400, "xle": 58.5, "wheat": 625, "copper": 4.5,
+    "smh": 222, "botz": 31.5, "shipbuilding": 240000
+  },
+  {
+    "date": "2026-03-05",
+    "oil": 83, "sp500": 6420, "kospi": 5200, "usdkrw": 1498,
+    "gold": 5180, "bitcoin": 69500, "gas": 3.32, "lng_eu": 60,
+    "defense": 115, "vix": 33.8, "dxy": 101.5, "us10y": 3.95,
+    "nikkei": 52100, "xle": 57, "wheat": 618, "copper": 4.55,
+    "smh": 225, "botz": 31.8, "shipbuilding": 245000
+  },
+  {
+    "date": "2026-03-06",
+    "oil": 83, "sp500": 6380, "kospi": 5150, "usdkrw": 1502,
+    "gold": 5200, "bitcoin": 69800, "gas": 3.35, "lng_eu": 61,
+    "defense": 116, "vix": 35, "dxy": 101.2, "us10y": 3.92,
+    "nikkei": 51800, "xle": 56.5, "wheat": 620, "copper": 4.52,
+    "smh": 220, "botz": 31.2, "shipbuilding": 248000
+  },
+  {
+    "date": "2026-03-09",
+    "oil": 120, "sp500": 6350, "kospi": 4900, "usdkrw": 1510,
+    "gold": 5220, "bitcoin": 70500, "gas": 3.45, "lng_eu": 64,
+    "defense": 118, "vix": 42.5, "dxy": 100.1, "us10y": 3.8,
+    "nikkei": 50200, "xle": 62.3, "wheat": 645, "copper": 4.4,
+    "smh": 208, "botz": 29.5, "shipbuilding": 262000
+  },
+  {
+    "date": "2026-03-10",
+    "oil": 90, "sp500": 6776, "kospi": 5533, "usdkrw": 1495,
+    "gold": 5200, "bitcoin": 71000, "gas": 3.5, "lng_eu": 60,
+    "defense": 116, "vix": 28.3, "dxy": 101, "us10y": 4.05,
+    "nikkei": 52700, "xle": 58, "wheat": 620, "copper": 4.6,
+    "smh": 236, "botz": 33.0, "shipbuilding": 255000
+  },
+  {
+    "date": "2026-03-12",
+    "oil": 95, "sp500": 6632, "kospi": 5300, "usdkrw": 1498,
+    "gold": 5240, "bitcoin": 70800, "gas": 3.55, "lng_eu": 62,
+    "defense": 120, "vix": 30.5, "dxy": 100.8, "us10y": 3.95,
+    "nikkei": 52200, "xle": 58.5, "wheat": 625, "copper": 4.55,
+    "smh": 228, "botz": 32.0, "shipbuilding": 258000
+  },
+  {
+    "date": "2026-03-13",
+    "oil": 103, "sp500": 6530, "kospi": 5150, "usdkrw": 1501,
+    "gold": 5250, "bitcoin": 71200, "gas": 3.58, "lng_eu": 63,
+    "defense": 125, "vix": 32.8, "dxy": 100.5, "us10y": 3.9,
+    "nikkei": 51500, "xle": 59.8, "wheat": 630, "copper": 4.48,
+    "smh": 224, "botz": 31.5, "shipbuilding": 265000
+  },
+  {
+    "date": "2026-03-14",
+    "oil": 105, "sp500": 6500, "kospi": 5100, "usdkrw": 1505,
+    "gold": 5260, "bitcoin": 71500, "gas": 3.6, "lng_eu": 64,
+    "defense": 128, "vix": 33.5, "dxy": 100.3, "us10y": 3.88,
+    "nikkei": 51200, "xle": 60.2, "wheat": 635, "copper": 4.45,
+    "smh": 222, "botz": 31.2, "shipbuilding": 268000
+  },
+  {
+    "date": "2026-03-15",
+    "oil": 99, "sp500": 6632, "kospi": 5487, "usdkrw": 1494,
+    "gold": 5062, "bitcoin": 71428, "gas": 2.99, "lng_eu": 51,
+    "defense": 229, "vix": 27.19, "dxy": 100.5, "us10y": 4.29,
+    "nikkei": 53820, "xle": 57.7, "wheat": 614, "copper": 5.76,
+    "smh": 232, "botz": 32.5, "shipbuilding": 260000
+  }
 ]

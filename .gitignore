@@ -13,6 +13,10 @@ dist-ssr
 *.local
 .superpowers/
 
+# Local settings
+.claude/settings.local.json
+.playwright-mcp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

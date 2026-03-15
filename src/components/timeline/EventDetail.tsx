@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import type { TopicMeta, TopicEvent, EconDataPoint } from '../../types';
-import { formatDateLong, getTagLabel, getNearestEconData } from '../../lib/utils';
+import { formatDateLong, getTagLabel, getNearestEconData, pctChange } from '../../lib/utils';
+import { computeStatContext } from '../../lib/storytelling';
 import MiniTrend from '../common/MiniTrend';
 import s from './EventDetail.module.css';
 
@@ -11,6 +12,8 @@ interface Props {
   events: TopicEvent[];
   currentIndex: number;
 }
+
+const DAY_MS = 86400000;
 
 export default function EventDetail({ event, meta, econ, events, currentIndex }: Props) {
   const detailRef = useRef<HTMLDivElement>(null);
@@ -28,6 +31,12 @@ export default function EventDetail({ event, meta, econ, events, currentIndex }:
   // Previous event for delta computation
   const prevEvent = currentIndex > 0 ? events[currentIndex - 1] : null;
   const prevEconPoint = prevEvent ? getNearestEconData(prevEvent.date, econ) : null;
+
+  // Baseline & timing
+  const econBaseline = econ[0] || null;
+  const daysSinceStart = Math.max(1, Math.floor(
+    (new Date(event.date).getTime() - new Date(meta.startDate).getTime()) / DAY_MS
+  ) + 1);
 
   // Build stats from meta.statsFields
   const econPoint = getNearestEconData(event.date, econ);
@@ -79,7 +88,41 @@ export default function EventDetail({ event, meta, econ, events, currentIndex }:
       }
     }
 
-    return { ...sf, value, delta, trendData };
+    // Context text
+    let context: string | null = null;
+    let pctFromBaseline: string | null = null;
+
+    if (isEconKey && econPoint && econBaseline) {
+      const curVal = Number(econPoint[sf.key]);
+      const baseVal = Number(econBaseline[sf.key]);
+      if (!isNaN(curVal) && !isNaN(baseVal) && baseVal !== 0) {
+        pctFromBaseline = `개전 대비 ${pctChange(curVal, baseVal)}`;
+      }
+    } else if (raw != null && raw > 0 && !isEconKey && sf.key !== 'cost') {
+      context = computeStatContext(raw, daysSinceStart);
+    }
+
+    // Severity: normalize delta to 0-1
+    let severity = 0;
+    if (delta != null && delta !== 0) {
+      const absDelta = Math.abs(delta);
+      severity = Math.min(1, absDelta / (Math.max(Math.abs(raw || 1), 100)));
+    }
+
+    return { ...sf, value, delta, trendData, context, pctFromBaseline, severity };
+  });
+
+  // Identify highlight: stat with largest absolute delta
+  let maxDeltaIdx = -1;
+  let maxDeltaAbs = 0;
+  stats.forEach((st, i) => {
+    if (st.delta != null) {
+      const abs = Math.abs(st.delta);
+      if (abs > maxDeltaAbs) {
+        maxDeltaAbs = abs;
+        maxDeltaIdx = i;
+      }
+    }
   });
 
   // Market reaction section
@@ -135,22 +178,36 @@ export default function EventDetail({ event, meta, econ, events, currentIndex }:
 
       {/* Stats grid */}
       <div className={s.statsGrid}>
-        {stats.map(st => (
-          <div key={st.key} className={s.ss}>
-            <div className={s.ssTop}>
-              <span className={s.ssVal} style={{ color: st.color }}>{st.value}</span>
-              {st.trendData.length >= 2 && (
-                <MiniTrend data={st.trendData} color={st.color} />
+        {stats.map((st, idx) => {
+          const isHighlight = idx === maxDeltaIdx;
+          const bgAlpha = st.severity > 0.3 ? Math.min(0.08, st.severity * 0.1) : 0;
+          return (
+            <div
+              key={st.key}
+              className={`${s.ss} ${isHighlight ? s.ssHighlight : ''}`}
+              style={bgAlpha > 0 ? { background: `rgba(192,57,43,${bgAlpha})` } : undefined}
+            >
+              <div className={s.ssTop}>
+                <span className={s.ssVal} style={{ color: st.color }}>{st.value}</span>
+                {st.trendData.length >= 2 && (
+                  <MiniTrend data={st.trendData} color={st.color} />
+                )}
+              </div>
+              <span className={s.ssLabel}>{st.label}</span>
+              {st.delta != null && st.delta !== 0 && (
+                <span className={st.delta > 0 ? s.deltaUp : s.deltaDown}>
+                  {st.delta > 0 ? `▲ +${Number(Math.abs(st.delta)).toLocaleString()}` : `▼ -${Number(Math.abs(st.delta)).toLocaleString()}`}
+                </span>
+              )}
+              {/* Context text */}
+              {(st.context || st.pctFromBaseline) && (
+                <span className={s.ssContext}>
+                  {st.context || st.pctFromBaseline}
+                </span>
               )}
             </div>
-            <span className={s.ssLabel}>{st.label}</span>
-            {st.delta != null && st.delta !== 0 && (
-              <span className={st.delta > 0 ? s.deltaUp : s.deltaDown}>
-                {st.delta > 0 ? `▲ +${Number(Math.abs(st.delta)).toLocaleString()}` : `▼ -${Number(Math.abs(st.delta)).toLocaleString()}`}
-              </span>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Market reaction */}

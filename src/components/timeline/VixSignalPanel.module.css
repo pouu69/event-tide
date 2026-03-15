@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════
+   VIX Fear · Greed Signal Panel
+   Light theme — matches app design language
+   ═══════════════════════════════════════════ */
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  overflow: visible;
+}
+
+/* ── Header strip ── */
+.headerStrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.headerDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px currentColor; }
+  50% { opacity: 0.5; box-shadow: 0 0 8px currentColor; }
+}
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.headerSub {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.signalChip {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--sig-color);
+  padding: 0.25rem 0.8rem;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Gauge ── */
+.gaugeWrap {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem 0;
+}
+.gaugeSvg {
+  width: 260px;
+  display: block;
+}
+.tickLabel {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  font-weight: 600;
+  fill: var(--text-muted);
+}
+.gaugeValue {
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 900;
+  fill: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.gaugeZone {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.gaugeSignal {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--text-muted);
+}
+
+/* ── Section labels ── */
+.sectionLabel {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Heatmap timeline ── */
+.heatSection {
+  padding: 0.8rem 0;
+  position: relative;
+}
+.heatStrip {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 72px;
+  padding: 0 1.4rem;
+  position: relative;
+}
+.heatCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+  cursor: default;
+}
+.heatColActive .heatBar {
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+.heatBar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  min-height: 2px;
+}
+.heatSig {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-ui);
+  font-size: 7px;
+  font-weight: 900;
+}
+.heatVal {
+  font-family: var(--font-ui);
+  font-size: 6.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  margin-top: 3px;
+}
+.heatDate {
+  font-family: var(--font-ui);
+  font-size: 6px;
+  color: var(--border-strong);
+}
+.heatZones {
+  position: absolute;
+  left: 1.4rem;
+  right: 1.4rem;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.heatZoneLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed rgba(0,0,0,0.08);
+}
+.heatZoneLine span {
+  position: absolute;
+  right: 0;
+  top: -9px;
+  font-family: var(--font-ui);
+  font-size: 6px;
+  color: var(--text-muted);
+}
+
+/* ── Win rates ── */
+.winSection {
+  padding: 0.8rem 1.4rem;
+  border-top: 1px solid var(--border);
+}
+.winCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+.winCard {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+}
+.winIndex {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+.winBig {
+  font-family: var(--font-ui);
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.winPctSign {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+.winMeta {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+.winBar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+.winBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Strong buy block */
+.sbBlock {
+  margin-top: 0.6rem;
+  padding: 0.6rem;
+  background: rgba(192, 57, 43, 0.04);
+  border: 1px solid rgba(192, 57, 43, 0.15);
+  border-radius: 6px;
+}
+.sbHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.sbPulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: sbPulseAnim 1.5s ease-in-out infinite;
+}
+@keyframes sbPulseAnim {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(192,57,43,0); }
+}
+.sbBlock .winCard {
+  background: rgba(192, 57, 43, 0.03);
+  border-color: rgba(192, 57, 43, 0.1);
+}
+
+/* ── Signal log ── */
+.logSection {
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--border);
+}
+.logGrid {
+  padding: 0 1.4rem;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.logGrid::-webkit-scrollbar { width: 3px; }
+.logGrid::-webkit-scrollbar-track { background: transparent; }
+.logGrid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.logHeaderRow {
+  display: grid;
+  grid-template-columns: 40px 24px 28px 1fr 1fr;
+  gap: 0.3rem;
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  z-index: 2;
+}
+.logHeaderCenter { text-align: center; }
+
+.logRow {
+  display: grid;
+  grid-template-columns: 40px 24px 28px 1fr 1fr;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--bg-warm);
+  transition: background 0.15s;
+}
+.logRow:hover { background: var(--bg-warm); }
+.logRowSB { background: rgba(192, 57, 43, 0.03); }
+.logRowSB:hover { background: rgba(192, 57, 43, 0.06); }
+
+.logDate {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.logSig {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-align: center;
+}
+.logVix {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* Diverging bar */
+.logDiverge {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 14px;
+}
+.logDivHalf {
+  flex: 1;
+  height: 8px;
+  display: flex;
+  position: relative;
+}
+.logDivHalf:first-child {
+  justify-content: flex-end;
+}
+.logDivCenter {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+.logDivBarNeg {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px 0 0 2px;
+  min-width: 2px;
+  opacity: 0.7;
+}
+.logDivBarPos {
+  height: 100%;
+  background: var(--green);
+  border-radius: 0 2px 2px 0;
+  min-width: 2px;
+  opacity: 0.7;
+}
+.logPctG {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+  min-width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.logPctR {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.logPending {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 0.5rem 1.4rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .gaugeSvg { width: 200px; }
+  .winBig { font-size: 1.4rem; }
+  .logHeaderRow, .logRow { grid-template-columns: 34px 20px 24px 1fr 1fr; }
+}

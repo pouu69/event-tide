@@ -1,11 +1,56 @@
 [
-  { "date": "2026-02-27", "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 179 },
-  { "date": "2026-02-28", "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 185 },
-  { "date": "2026-03-03", "hanwha": 1369000, "lig": 661000, "kai": 95000, "hyundaiRotem": 78000, "ita": 195 },
-  { "date": "2026-03-04", "hanwha": 1432000, "lig": 680000, "kai": 93000, "hyundaiRotem": 75000, "ita": 200 },
-  { "date": "2026-03-05", "hanwha": 1500000, "lig": 720000, "kai": 91000, "hyundaiRotem": 70000, "ita": 210 },
-  { "date": "2026-03-06", "hanwha": 1480000, "lig": 710000, "kai": 90000, "hyundaiRotem": 68000, "ita": 215 },
-  { "date": "2026-03-10", "hanwha": 1520000, "lig": 750000, "kai": 92000, "hyundaiRotem": 65000, "ita": 218 },
-  { "date": "2026-03-12", "hanwha": 1550000, "lig": 780000, "kai": 91000, "hyundaiRotem": 64000, "ita": 225 },
-  { "date": "2026-03-15", "hanwha": 1580000, "lig": 800000, "kai": 90000, "hyundaiRotem": 63000, "ita": 229 }
+  {
+    "date": "2026-02-27",
+    "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 179,
+    "vix": 15.2, "sp500": 6850, "kospi": 5800,
+    "smh": 252, "botz": 35.2, "shipbuilding": 210000
+  },
+  {
+    "date": "2026-02-28",
+    "hanwha": 1195000, "lig": 509000, "kai": 98000, "hyundaiRotem": 72000, "ita": 185,
+    "vix": 28.5, "sp500": 6780, "kospi": 5650,
+    "smh": 238, "botz": 33.5, "shipbuilding": 218000
+  },
+  {
+    "date": "2026-03-03",
+    "hanwha": 1369000, "lig": 661000, "kai": 95000, "hyundaiRotem": 78000, "ita": 195,
+    "vix": 34.7, "sp500": 6650, "kospi": 5400,
+    "smh": 228, "botz": 32.2, "shipbuilding": 232000
+  },
+  {
+    "date": "2026-03-04",
+    "hanwha": 1432000, "lig": 680000, "kai": 93000, "hyundaiRotem": 75000, "ita": 200,
+    "vix": 36.2, "sp500": 6500, "kospi": 5094,
+    "smh": 222, "botz": 31.5, "shipbuilding": 240000
+  },
+  {
+    "date": "2026-03-05",
+    "hanwha": 1500000, "lig": 720000, "kai": 91000, "hyundaiRotem": 70000, "ita": 210,
+    "vix": 33.8, "sp500": 6420, "kospi": 5200,
+    "smh": 225, "botz": 31.8, "shipbuilding": 245000
+  },
+  {
+    "date": "2026-03-06",
+    "hanwha": 1480000, "lig": 710000, "kai": 90000, "hyundaiRotem": 68000, "ita": 215,
+    "vix": 35, "sp500": 6380, "kospi": 5150,
+    "smh": 220, "botz": 31.2, "shipbuilding": 248000
+  },
+  {
+    "date": "2026-03-10",
+    "hanwha": 1520000, "lig": 750000, "kai": 92000, "hyundaiRotem": 65000, "ita": 218,
+    "vix": 28.3, "sp500": 6776, "kospi": 5533,
+    "smh": 236, "botz": 33.0, "shipbuilding": 255000
+  },
+  {
+    "date": "2026-03-12",
+    "hanwha": 1550000, "lig": 780000, "kai": 91000, "hyundaiRotem": 64000, "ita": 225,
+    "vix": 30.5, "sp500": 6632, "kospi": 5300,
+    "smh": 228, "botz": 32.0, "shipbuilding": 258000
+  },
+  {
+    "date": "2026-03-15",
+    "hanwha": 1488000, "lig": 723000, "kai": 182700, "hyundaiRotem": 198500, "ita": 229,
+    "vix": 27.19, "sp500": 6632, "kospi": 5487,
+    "smh": 232, "botz": 32.5, "shipbuilding": 260000
+  }
 ]

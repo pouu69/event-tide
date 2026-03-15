@@ -4,9 +4,12 @@ import { useTopicData, useEventNavigation, useKeyboardNav } from '../hooks';
 import TopBar from '../components/timeline/TopBar';
 import TimelineStrip from '../components/timeline/TimelineStrip';
 import EventSidebar from '../components/timeline/EventSidebar';
+import InsightCard from '../components/timeline/InsightCard';
 import EventDetail from '../components/timeline/EventDetail';
 import EconPanel from '../components/timeline/EconPanel';
-import InvestSimPanel from '../components/timeline/InvestSimPanel';
+import VixSignalPanel from '../components/timeline/VixSignalPanel';
+import AnalysisPanel from '../components/timeline/AnalysisPanel';
+import { generateInsight } from '../lib/storytelling';
 import s from './TimelinePage.module.css';
 
 export default function TimelinePage() {
@@ -81,9 +84,15 @@ export default function TimelinePage() {
       <div className={s.main}>
         <EventSidebar events={events} currentIndex={currentIndex} onGoTo={goTo} meta={meta} />
         <div className={s.detailView}>
+          <InsightCard insight={generateInsight(
+            currentEvent,
+            currentIndex > 0 ? events[currentIndex - 1] : null,
+            meta, econ, events, currentIndex
+          )} />
           <EventDetail event={currentEvent} meta={meta} econ={econ} events={events} currentIndex={currentIndex} />
           <EconPanel meta={meta} econ={econ} currentDate={currentEvent.date} events={events} />
-          <InvestSimPanel meta={meta} econ={econ} currentDate={currentEvent.date} />
+          <VixSignalPanel econ={econ} currentDate={currentEvent.date} />
+          <AnalysisPanel meta={meta} econ={econ} events={events} currentEvent={currentEvent} currentIndex={currentIndex} />
         </div>
       </div>
     </div>
