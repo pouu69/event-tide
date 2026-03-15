@@ -10,7 +10,15 @@
       "Bash(node:*)",
       "Bash(wc:*)",
       "Bash(/Users/kwanung/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.2/skills/brainstorming/scripts/start-server.sh --project-dir /Users/kwanung/development/experiments/war-history)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Read(//private/tmp/**)",
+      "Bash(rm -rf war-history-scaffold)",
+      "Bash(npm create:*)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(echo:*)"
     ]
   }
 }
