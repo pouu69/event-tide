@@ -1,0 +1,236 @@
+{
+  "slug": "us-iran-war",
+  "title": "미국 vs 이란 전쟁",
+  "status": "ongoing",
+  "startDate": "2026-02-28",
+  "baselineDate": "2026-02-27",
+  "phases": [
+    {
+      "id": "prelude",
+      "title": "전주곡: 충돌의 씨앗",
+      "period": "2025년 6월 — 2026년 1월",
+      "color": "#c45500"
+    },
+    {
+      "id": "diplomacy",
+      "title": "외교 협상: 마지막 기회",
+      "period": "2026년 2월 6일 — 2월 27일",
+      "color": "#2c6fbb"
+    },
+    {
+      "id": "war-start",
+      "title": "전쟁 개시: Operation Epic Fury",
+      "period": "2026년 2월 28일",
+      "color": "#c0392b"
+    },
+    {
+      "id": "escalation",
+      "title": "확전: 지역 전쟁으로",
+      "period": "2026년 3월 1일 — 3월 7일",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "ongoing",
+      "title": "현재 진행: 출구 없는 전쟁",
+      "period": "2026년 3월 8일 — 현재",
+      "color": "#7b3fa0"
+    }
+  ],
+  "kpis": [
+    {
+      "key": "casualties",
+      "label": "사상자",
+      "unit": "명",
+      "source": "stats",
+      "direction": "neutral"
+    },
+    {
+      "key": "oil",
+      "label": "유가",
+      "unit": "$",
+      "source": "econ",
+      "direction": "down-good"
+    },
+    {
+      "key": "usDead",
+      "label": "미군",
+      "unit": "명",
+      "source": "stats",
+      "direction": "neutral"
+    }
+  ],
+  "statsFields": [
+    {
+      "key": "strikes",
+      "label": "공습 횟수",
+      "color": "#c0392b"
+    },
+    {
+      "key": "casualties",
+      "label": "총 사상자",
+      "color": "#c0392b"
+    },
+    {
+      "key": "missiles",
+      "label": "이란 미사일/드론",
+      "color": "#2c6fbb"
+    },
+    {
+      "key": "usDead",
+      "label": "미군 사망",
+      "color": "#7b3fa0"
+    },
+    {
+      "key": "cost",
+      "label": "작전 비용 $B",
+      "color": "#27864a"
+    }
+  ],
+  "metricDefs": [
+    {
+      "key": "oil",
+      "label": "유가 $",
+      "unit": "$",
+      "format": "currency",
+      "direction": "down-good",
+      "chartColor": "#e8590c",
+      "chartLineWidth": 3,
+      "showOnDashboard": true,
+      "showOnDetail": true
+    },
+    {
+      "key": "sp500",
+      "label": "S&P 500",
+      "unit": "pt",
+      "format": "number",
+      "direction": "up-good",
+      "chartColor": "#1864ab",
+      "chartDash": [
+        8,
+        4
+      ],
+      "showOnDashboard": false,
+      "showOnDetail": true
+    },
+    {
+      "key": "kospi",
+      "label": "KOSPI",
+      "unit": "pt",
+      "format": "number",
+      "direction": "up-good",
+      "chartColor": "#2b8a3e",
+      "chartLineWidth": 2.5,
+      "showOnDashboard": false,
+      "showOnDetail": true
+    },
+    {
+      "key": "gold",
+      "label": "금 $",
+      "unit": "$",
+      "format": "currency",
+      "direction": "neutral",
+      "chartColor": "#e8b006",
+      "chartDash": [
+        3,
+        3
+      ],
+      "showOnDashboard": false,
+      "showOnDetail": true
+    },
+    {
+      "key": "bitcoin",
+      "label": "비트코인 $",
+      "unit": "$",
+      "format": "currency",
+      "direction": "neutral",
+      "chartColor": "#f06595",
+      "chartLineWidth": 2,
+      "showOnDashboard": false,
+      "showOnDetail": true
+    },
+    {
+      "key": "usdkrw",
+      "label": "원/달러",
+      "unit": "₩",
+      "format": "number",
+      "direction": "down-good",
+      "chartColor": "#7048e8",
+      "chartDash": [
+        12,
+        4
+      ],
+      "showOnDashboard": false,
+      "showOnDetail": true
+    }
+  ],
+  "collectors": [
+    {
+      "key": "oil",
+      "type": "yahoo",
+      "symbol": "BZ=F",
+      "transform": "round"
+    },
+    {
+      "key": "sp500",
+      "type": "yahoo",
+      "symbol": "^GSPC",
+      "transform": "round"
+    },
+    {
+      "key": "kospi",
+      "type": "yahoo",
+      "symbol": "^KS11",
+      "transform": "round"
+    },
+    {
+      "key": "usdkrw",
+      "type": "yahoo",
+      "symbol": "KRW=X",
+      "transform": "round"
+    },
+    {
+      "key": "gold",
+      "type": "yahoo",
+      "symbol": "GC=F",
+      "transform": "round"
+    },
+    {
+      "key": "bitcoin",
+      "type": "coingecko",
+      "id": "bitcoin",
+      "transform": "round"
+    },
+    {
+      "key": "gas",
+      "type": "yahoo",
+      "symbol": "RB=F",
+      "transform": "round2"
+    },
+    {
+      "key": "lng_eu",
+      "type": "yahoo",
+      "symbol": "TTF=F",
+      "transform": "round"
+    },
+    {
+      "key": "defense",
+      "type": "yahoo",
+      "symbol": "ITA",
+      "transform": "round"
+    }
+  ],
+  "newsSources": [
+    {
+      "name": "Al Jazeera",
+      "type": "rss",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "language": "en"
+    },
+    {
+      "name": "Reuters",
+      "type": "rss",
+      "url": "https://www.rss.reuters.com/news/world",
+      "language": "en"
+    }
+  ]
+}
